@@ -1,0 +1,132 @@
+/* Need to add alternate theme stylings. users can pick their own theme, and more will be unlocked as they progress through the app */
+.notecard {
+    border-radius: 10px;
+    background-color: blueviolet;
+    width: 170px;
+    padding: 5px;
+}
+
+.innerNoteCard {
+    background-color: white;
+    border-radius: 10px;
+    width: 160px;
+    height: 160px;
+    padding-left: 25px;
+}
+
+.playBtn {
+    border-radius: 7px 0 0 7px;
+    background-color: rgb(81, 0, 105);
+    color: white;
+    border-right: 1px solid rgb(48, 0, 63);
+}
+
+.susBtnOff {
+    border-radius: 0 7px 7px 0;
+    background-color: rgb(81, 0, 105);
+    color: white;
+}
+
+.susBtnOn {
+    border-radius: 0 7px 7px 0;
+    background-color: rgb(42, 0, 54);
+    color: aquamarine;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    margin: 18px 0;
+    width: 100%;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: #cb9ee0;
+    border-radius: 10px;
+    border-top: 0.2px solid #6a0074;
+    border-left: 0.2px solid #6a0074;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    border: 1px solid #919191;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6.5px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #f3b7ff;
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: #cb9ee0;
+    border-radius: 10px;
+    border-top: 0.2px solid #6a0074;
+    border-left: 0.2px solid #6a0074;
+  }
+  input[type=range]::-moz-range-thumb {
+    border: 1px solid #919191;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -6.5px;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #cb9ee0;
+    border-radius: 10px;
+    border-top: 0.2px solid #6a0074;
+    border-left: 0.2px solid #6a0074;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #cb9ee0;
+    border-radius: 10px;
+    border-top: 0.2px solid #6a0074;
+    border-left: 0.2px solid #6a0074;
+  }
+  input[type=range]::-ms-thumb {
+    border: 1px solid #919191;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -6.5px;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #f3b7ff;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #f3b7ff;
+  }
+
+
+
+.pitchSlider {
+    margin-top: 10px;
+
+}
+
+.card-title {
+    margin-left: -25px;
+    text-align: center;
+}

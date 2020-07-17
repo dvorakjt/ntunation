@@ -1,0 +1,13 @@
+h3 {
+    background-color: purple;
+    text-align: center;
+    margin-top: 0px;
+    width: 100%;
+}
+
+.qCardWrapper {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    padding-top: 0px;
+}
