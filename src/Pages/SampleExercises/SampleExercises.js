@@ -5,6 +5,7 @@ import Jumbo from '../../Components/Jumbotron/Jumbo';
 import QuestionCard2Notes from '../../Components/QuestionCard2Notes/QuestionCard2Notes'
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 import ModalPrefab from '../../Components/Modal/Modal';
+import InfoCard from '../../Components/InfoCard/InfoCard';
 import * as data from '../../Data/exercises.json';
 
 function SampleExercises(props) {
@@ -31,35 +32,26 @@ function SampleExercises(props) {
     }, []);
     return (
         <div className="heroImg">
-            <ModalPrefab title={thisExercise.title} buttons={
-                <Link to={`/sampleexercises/${nextExercise}`}><button className="btn btn-success">Next Exercise!</button></Link>
-            }>
+            <ModalPrefab title={thisExercise.title}>
                 {(() => {
-                    if (thisExercise.body) {
-                        return (
-                            <>
-                                <h4>{thisExercise.bodyHeader}</h4>
-                                <p>{thisExercise.body}</p>
-                            </>
-                        )
-                    } else if (thisExercise.questionType) {
-                        switch (thisExercise.questionType) {
-                            case "2Notes":
-                                return (
-                                    <QuestionCard2Notes instructions={thisExercise.instructions} noteName1={thisExercise.note1.noteName} noteName2={thisExercise.note2.noteName}
-                                        pitch1={thisExercise.note1.pitch} pitch2={thisExercise.note2.pitch} header1={thisExercise.note1.headerText}
-                                        header2={thisExercise.note2.headerText} clef1={thisExercise.note1.clef} clef2={thisExercise.note2.clef}
-                                        keySig={thisExercise.note1.keySig} slider={thisExercise.note2.slider} sliderMin={thisExercise.note2.sliderMin}
-                                        sliderMax={thisExercise.note2.sliderMax} sliderStep={thisExercise.note2.sliderStep}
-                                    />
-                                )
-                            default:
-                                break;
-                        }
-                    } else {
-                        return (
-                            <p>Nothing to display yet.</p>
-                        )
+                    switch (thisExercise.cardType) {
+                        case "info":
+                            return (<InfoCard bodyHeader={thisExercise.bodyHeader} body={thisExercise.body} nextExercise={nextExercise} />)
+                        case "2Notes":
+                            return (
+                                <QuestionCard2Notes instructions={thisExercise.instructions} noteName1={thisExercise.note1.noteName} noteName2={thisExercise.note2.noteName}
+                                    pitch1={thisExercise.note1.pitch} pitch2={thisExercise.note2.pitch} header1={thisExercise.note1.headerText}
+                                    header2={thisExercise.note2.headerText} clef1={thisExercise.note1.clef} clef2={thisExercise.note2.clef}
+                                    keySig={thisExercise.note1.keySig} slider={thisExercise.note2.slider} sliderMin={thisExercise.note2.sliderMin}
+                                    sliderMax={thisExercise.note2.sliderMax} sliderStep={thisExercise.note2.sliderStep} btn={thisExercise.btn}
+                                    nextExercise={nextExercise} currentExercise={props.exercise}
+                                />)
+                        default:
+                            return (
+                                <>
+                                    <p>Nothing to display yet.</p>
+                                </>
+                            )
                     }
                 })()}
             </ModalPrefab>

@@ -2,13 +2,13 @@
     "exercises": [
         {
             "title": "Introduction",
+            "cardType": "info",
             "bodyHeader": "Welcome to NTunation!",
-            "body": "NTunation is an intonation-focused aural training application. NTunation is designed to help train musicians to hear subtle differences in pitch to allow them to improve their intonation while playing. Users are offered a series of exercises to complete. Some exercises ask the user to identify if a note is sharp or flat. Others ask the user to adjust a pitch until it is in tune. Practicing these exercises regularly, in combination with learning the pitch tendencies of your instrument, practicing with a tuner and a drone, and other more generic ear-training exercises can greatly improve a musician's ear for intonation.",
-            "buttons": "<Link to='/sampleexercises/unisons'><button className='btn btn-primary'>Start the demo!</button><Link>"
+            "body": "NTunation is an intonation-focused aural training application. NTunation is designed to help train musicians to hear subtle differences in pitch to allow them to improve their intonation while playing. Users are offered a series of exercises to complete. Some exercises ask the user to identify if a note is sharp or flat. Others ask the user to adjust a pitch until it is in tune. Practicing these exercises regularly, in combination with learning the pitch tendencies of your instrument, practicing with a tuner and a drone, and other more generic ear-training exercises can greatly improve a musician's ear for intonation."
         },
         {
             "title": "Unisons",
-            "questionType": "2Notes",
+            "cardType": "2Notes",
             "instructions": "Adjust the slider until the 2nd pitch is in tune with the first.",
             "answer": "-10",
             "note1": {
@@ -29,22 +29,66 @@
                 "clef": "treble",
                 "keySig": "C"
             },
-            "buttons": "submitBtn"
+            "defaultAnsweredState": "0",
+            "btn": "submit"
         },
         {
-            "title": "Octaves"
+            "title": "Octaves",
+            "cardType": "2Notes",
+            "instructions": "Identify whether the second note is sharp or flat.",
+            "answer": "Flat",
+            "note1": {
+                "headerText": "Note 1: A3",
+                "noteName": "A,",
+                "pitch": "220",
+                "clef": "bass",
+                "keySig": "C"
+            },
+            "note2": {
+                "headerText": "Note 2: A4",
+                "noteName": "A",
+                "pitch": "436.2041514738743",
+                "clef": "treble",
+                "keySig": "C"
+            },
+            "btn": "sharpOrFlat"
         },
         {
-            "title": "Intervals"
+            "title": "Intervals",
+            "cardType": "2Notes",
+            "instructions": "Adjust the slider until the 2nd pitch is in tune with the first.",
+            "answer": "20",
+            "note1": {
+                "headerText": "Note 1: E4",
+                "noteName": "E",
+                "pitch": "329.63",
+                "clef": "treble",
+                "keySig": "G"
+            },
+            "note2": {
+                "headerText": "Note 2: B4",
+                "noteName": "B",
+                "pitch": "488.2075168615852",
+                "slider": "true",
+                "sliderMin": "-25",
+                "sliderMax": "25",
+                "sliderStep": "5",
+                "clef": "treble",
+                "keySig": "G"
+            },
+            "btn": "submit"
         },
         {
-            "title": "Scales"
+            "title": "Scales",
+            "defaultAnsweredState": "0"
         },
         {
-            "title": "Chords"
+            "title": "Chords",
+            "defaultAnsweredState": "0"
         },
         {
-            "title": "Melody"
+            "title": "Melody",
+            "defaultAnsweredState": "0"
         }
     ]
 }

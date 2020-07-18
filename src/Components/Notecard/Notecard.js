@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //import ABCJS and Tone.js
 import * as Tone from 'tone';
 import Abcjs from 'react-abcjs';
@@ -58,6 +58,13 @@ function Notecard({ noteCardKey, pitch, slider, sliderMin, sliderMax, sliderStep
         //set state to the opposite of state
         setSusBtnState(!susBtnState);
     }
+
+    //Make sure a sustained tone stops if the component unmounts
+    // useEffect(() => {
+    //     return function cleanup() {
+    //         synth.triggerRelease();
+    //     }
+    // })
 
     return (
         <div className="card notecard" key={noteCardKey}>
