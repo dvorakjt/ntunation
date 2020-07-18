@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 //Import bootstrap css file
@@ -10,14 +11,27 @@ import { AnswerStoreProvider } from './Utils/AnswerStore';
 import Homepage from './Pages/Homepage/Homepage';
 import SampleExercises from './Pages/SampleExercises/SampleExercises'
 
+//Import components
+import ModalPrefab from './Components/Modal/Modal';
+
 function App() {
   return (
-    <AnswerStoreProvider>
-      <div className="App">
-        <SampleExercises />
-      </div>
-    </AnswerStoreProvider>
+    <Router>
+      <AnswerStoreProvider>
+        <div className="App">
+          <Route exact path="/" component={Homepage} />
+          <Route path="/sampleexercises/:exercise" children={<Exercises />} />
+        </div>
+      </AnswerStoreProvider>
+    </Router>
   );
+}
+
+function Exercises() {
+  let { exercise } = useParams();
+  return (
+    <SampleExercises exercise={exercise} />
+  )
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 //import the notecard
@@ -23,7 +23,6 @@ function QuestionCard2Notes(props) {
         <>
             <div className="row">
                 <div className="col-12">
-                    <h1>{state.verification.toString()}</h1>
                     <h4>{props.instructions}</h4>
                 </div>
             </div>

@@ -6,6 +6,7 @@ h3 {
 }
 
 .qCardWrapper {
+    margin-left: 34%;
     width: 500px;
     height: 500px;
     border: 1px solid black;

@@ -35,12 +35,10 @@ function Notecard({ noteCardKey, pitch, slider, sliderMin, sliderMax, sliderStep
         setCurrentPitch(newPitch);
         synth.setNote(currentPitch);
         //set the global answer object to that value
-        console.log(typeof (alteration));
         dispatch({
             type: "UPDATE_USER_ANSWER",
             userAnswer: alteration
         })
-        console.log(state.userAnswer);
     }
 
     function handlePlayBtn(pitch) {
@@ -53,7 +51,6 @@ function Notecard({ noteCardKey, pitch, slider, sliderMin, sliderMax, sliderStep
     function handleSustainBtn(pitch, state) {
         //if state is true, stop playback, if state is false, start playback
         if (state) {
-            console.log('release!!!');
             synth.triggerRelease();
         } else if (!state) {
             synth.triggerAttack(pitch);

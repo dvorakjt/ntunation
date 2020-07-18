@@ -1,0 +1,50 @@
+{
+    "exercises": [
+        {
+            "title": "Introduction",
+            "bodyHeader": "Welcome to NTunation!",
+            "body": "NTunation is an intonation-focused aural training application. NTunation is designed to help train musicians to hear subtle differences in pitch to allow them to improve their intonation while playing. Users are offered a series of exercises to complete. Some exercises ask the user to identify if a note is sharp or flat. Others ask the user to adjust a pitch until it is in tune. Practicing these exercises regularly, in combination with learning the pitch tendencies of your instrument, practicing with a tuner and a drone, and other more generic ear-training exercises can greatly improve a musician's ear for intonation.",
+            "buttons": "<Link to='/sampleexercises/unisons'><button className='btn btn-primary'>Start the demo!</button><Link>"
+        },
+        {
+            "title": "Unisons",
+            "questionType": "2Notes",
+            "instructions": "Adjust the slider until the 2nd pitch is in tune with the first.",
+            "answer": "-10",
+            "note1": {
+                "headerText": "Note 1: C4",
+                "noteName": "C",
+                "pitch": "261.63",
+                "clef": "treble",
+                "keySig": "C"
+            },
+            "note2": {
+                "headerText": "Note 2: C4",
+                "noteName": "C",
+                "pitch": "263.14562259",
+                "slider": "true",
+                "sliderMin": "-25",
+                "sliderMax": "25",
+                "sliderStep": "5",
+                "clef": "treble",
+                "keySig": "C"
+            },
+            "buttons": "submitBtn"
+        },
+        {
+            "title": "Octaves"
+        },
+        {
+            "title": "Intervals"
+        },
+        {
+            "title": "Scales"
+        },
+        {
+            "title": "Chords"
+        },
+        {
+            "title": "Melody"
+        }
+    ]
+}
