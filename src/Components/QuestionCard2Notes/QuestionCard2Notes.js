@@ -18,6 +18,7 @@ function QuestionCard2Notes(props) {
 
     const onSubmitBtnClick = (event) => {
         event.preventDefault();
+        console.log(state.userAnswer + " | " + state.correctAnswer);
         if (state.userAnswer === state.correctAnswer) {
             setAnswered(1);
         } else {

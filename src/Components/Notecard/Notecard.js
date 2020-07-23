@@ -60,11 +60,11 @@ function Notecard({ noteCardKey, pitch, slider, sliderMin, sliderMax, sliderStep
     }
 
     //Make sure a sustained tone stops if the component unmounts
-    // useEffect(() => {
-    //     return function cleanup() {
-    //         synth.triggerRelease();
-    //     }
-    // })
+    useEffect(() => {
+        return function cleanup() {
+            synth.triggerRelease();
+        }
+    }, []);
 
     return (
         <div className="card notecard" key={noteCardKey}>

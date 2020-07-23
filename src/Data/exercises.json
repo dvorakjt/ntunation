@@ -80,7 +80,90 @@
         },
         {
             "title": "Scales",
-            "defaultAnsweredState": "0"
+            "cardType": "melody",
+            "instructions": "Identify the out-of-tune note in the scale, and whether it is sharp or flat.",
+            "headerText": "F major",
+            "clef": "treble",
+            "keySig": "F",
+            "tempo": "100",
+            "baseValue": "1/2",
+            "transposition": "",
+            "meter": "none",
+            "answer": [
+                "7",
+                "Sharp"
+            ],
+            "notes": [
+                {
+                    "pitch": "349.23",
+                    "name": "F2",
+                    "dispName": "F₄",
+                    "time": "0",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "392.00",
+                    "name": "G2",
+                    "dispName": "G₄",
+                    "time": "4n",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "440.00",
+                    "name": "A2",
+                    "dispName": "A₄",
+                    "time": "2n",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "466.16",
+                    "name": "_B2",
+                    "dispName": "B♭₄",
+                    "time": {
+                        "2n": 1,
+                        "4n": 1
+                    },
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "523.25",
+                    "name": "c2",
+                    "dispName": "C₅",
+                    "time": "1m",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "587.33",
+                    "name": "d2",
+                    "dispName": "D₅",
+                    "time": {
+                        "1m": 1,
+                        "4n": 1
+                    },
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "659.25",
+                    "name": "e2",
+                    "dispName": "E₅",
+                    "time": {
+                        "1m": 1,
+                        "2n": 1
+                    },
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "705.75960546",
+                    "name": "f2",
+                    "dispName": "F₅",
+                    "time": {
+                        "1m": 1,
+                        "2n": 1,
+                        "4n": 1
+                    },
+                    "dur": "4n"
+                }
+            ]
         },
         {
             "title": "Chords",

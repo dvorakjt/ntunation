@@ -12,7 +12,7 @@ function Jumbo(props) {
             </div>
             <div className="row">
                 <div className="col-12">
-                    <div class="textWrapper">
+                    <div className="textWrapper">
                         <h3>{props.text}</h3>
                     </div>
                 </div>
