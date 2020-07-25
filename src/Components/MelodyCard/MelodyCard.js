@@ -27,6 +27,7 @@ pass to tone js and one to pass into the display components. i could also use ma
 //baseValue is the smallest note value found in the melody, for instance '1/4' for the quarter note. tempo is
 //tempo in bpm
 function MelodyCard({ notes, clef, keySig, headerText, tempo, baseValue, meter, transposition }) {
+    console.log(meter);
     //hook into the global answer store
     const [state, dispatch] = useAnswerStoreContext();
 
@@ -54,7 +55,7 @@ function MelodyCard({ notes, clef, keySig, headerText, tempo, baseValue, meter, 
         K:${keySig}
         K: clef=${clef}
         ${abcNotes}`
-
+    console.log(abcNotation);
     //map the display names of each of the notes into an array along with their pitch in order to construct buttons
     //the index of these note names will be used to validate the correct answer
     const displayNotes = notes.map(({ dispName, pitch }) => {
@@ -88,6 +89,9 @@ function MelodyCard({ notes, clef, keySig, headerText, tempo, baseValue, meter, 
 
     useEffect(() => {
         melody.start(0);
+        return function cleanup() {
+            melody.dispose();
+        }
     }, []);
 
     //handles the playBtn for the entire melody

@@ -86,7 +86,7 @@
             "clef": "treble",
             "keySig": "F",
             "tempo": "100",
-            "baseValue": "1/2",
+            "baseValue": "1/4",
             "transposition": "",
             "meter": "none",
             "answer": [
@@ -96,28 +96,28 @@
             "notes": [
                 {
                     "pitch": "349.23",
-                    "name": "F2",
+                    "name": "F1",
                     "dispName": "F₄",
                     "time": "0",
                     "dur": "4n"
                 },
                 {
                     "pitch": "392.00",
-                    "name": "G2",
+                    "name": "G1",
                     "dispName": "G₄",
                     "time": "4n",
                     "dur": "4n"
                 },
                 {
                     "pitch": "440.00",
-                    "name": "A2",
+                    "name": "A1",
                     "dispName": "A₄",
                     "time": "2n",
                     "dur": "4n"
                 },
                 {
                     "pitch": "466.16",
-                    "name": "_B2",
+                    "name": "_B1",
                     "dispName": "B♭₄",
                     "time": {
                         "2n": 1,
@@ -127,14 +127,14 @@
                 },
                 {
                     "pitch": "523.25",
-                    "name": "c2",
+                    "name": "c1",
                     "dispName": "C₅",
                     "time": "1m",
                     "dur": "4n"
                 },
                 {
                     "pitch": "587.33",
-                    "name": "d2",
+                    "name": "d1",
                     "dispName": "D₅",
                     "time": {
                         "1m": 1,
@@ -144,7 +144,7 @@
                 },
                 {
                     "pitch": "659.25",
-                    "name": "e2",
+                    "name": "e1",
                     "dispName": "E₅",
                     "time": {
                         "1m": 1,
@@ -154,7 +154,7 @@
                 },
                 {
                     "pitch": "705.75960546",
-                    "name": "f2",
+                    "name": "f1",
                     "dispName": "F₅",
                     "time": {
                         "1m": 1,
@@ -166,12 +166,118 @@
             ]
         },
         {
-            "title": "Chords",
-            "defaultAnsweredState": "0"
+            "title": "Chords - Just Intonation",
+            "cardType": "chord",
+            "instructions": "Adjust the slider until the third of the chord is in tune.",
+            "headerText": "A maj",
+            "clef": "treble",
+            "keySig": "A",
+            "chordNotation": "[A,CE4]",
+            "answer": "-14",
+            "notes": [
+                {
+                    "pitch": 220,
+                    "abcName": "A,",
+                    "dispName": "A"
+                },
+                {
+                    "pitch": 277.18,
+                    "abcName": "^C",
+                    "dispName": "C#"
+                },
+                {
+                    "pitch": 330,
+                    "abcName": "E",
+                    "dispName": "E"
+                }
+            ]
         },
         {
             "title": "Melody",
-            "defaultAnsweredState": "0"
+            "cardType": "melody",
+            "instructions": "Identify the out-of-tune note in the melody, and whether it is sharp or flat.",
+            "headerText": "Frere Jacques",
+            "clef": "treble",
+            "keySig": "C",
+            "tempo": "84",
+            "baseValue": "1/4",
+            "transposition": "",
+            "meter": "4/4",
+            "answer": [
+                "5",
+                "Sharp"
+            ],
+            "notes": [
+                {
+                    "pitch": "261.63",
+                    "name": "C1",
+                    "dispName": "C₄",
+                    "time": "0",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "293.66",
+                    "name": "D1",
+                    "dispName": "D₄",
+                    "time": "4n",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "329.63",
+                    "name": "E1",
+                    "dispName": "E₄",
+                    "time": "2n",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "261.63",
+                    "name": "C1|",
+                    "dispName": "C₄",
+                    "time": {
+                        "2n": 1,
+                        "4n": 1
+                    },
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "261.63",
+                    "name": "C1",
+                    "dispName": "C₄",
+                    "time": "1m",
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "297.07203554",
+                    "name": "D1",
+                    "dispName": "D₅",
+                    "time": {
+                        "1m": 1,
+                        "4n": 1
+                    },
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "329.63",
+                    "name": "E1",
+                    "dispName": "E₄",
+                    "time": {
+                        "1m": 1,
+                        "2n": 1
+                    },
+                    "dur": "4n"
+                },
+                {
+                    "pitch": "261.63",
+                    "name": "C1|",
+                    "dispName": "C₄",
+                    "time": {
+                        "1m": 1,
+                        "2n": 1,
+                        "4n": 1
+                    },
+                    "dur": "4n"
+                }
+            ]
         }
     ]
 }

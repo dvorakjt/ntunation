@@ -24,6 +24,11 @@ function QuestionCard2Notes(props) {
         } else {
             setAnswered(2);
         }
+        //reset the global user answer state
+        dispatch({
+            type: "UPDATE_USER_ANSWER",
+            userAnswer: ""
+        });
     }
 
     const onSharpOrFlatClick = (event) => {
@@ -33,6 +38,11 @@ function QuestionCard2Notes(props) {
         } else {
             setAnswered(2);
         }
+        //reset the global user answer state
+        dispatch({
+            type: "UPDATE_USER_ANSWER",
+            userAnswer: ""
+        });
     }
 
     switch (answered) {

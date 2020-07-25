@@ -4,6 +4,7 @@ import TopNav from '../../Components/TopNav/TopNav';
 import Jumbo from '../../Components/Jumbotron/Jumbo';
 import QuestionCardMelody from '../../Components/QuestionCardMelody/QuestionCardMelody';
 import QuestionCard2Notes from '../../Components/QuestionCard2Notes/QuestionCard2Notes';
+import QuestionCardChord from '../../Components/QuestionCardChord/QuestionCard2Chord';
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 import ModalPrefab from '../../Components/Modal/Modal';
 import InfoCard from '../../Components/InfoCard/InfoCard';
@@ -26,7 +27,7 @@ function SampleExercises(props) {
     const nextExercise = exercises[nextExerciseIndex];
     //When the component has mounted and when thisExercise updates, call dispatch to set the correct answer to thisExercise.answer
     useEffect(() => {
-        console.log(thisExercise);
+        console.log(thisExercise.baseValue);
         dispatch({
             type: "UPDATE_CORRECT_ANSWER",
             correctAnswer: thisExercise.answer
@@ -52,9 +53,14 @@ function SampleExercises(props) {
                             return (
                                 <QuestionCardMelody instructions={thisExercise.instructions} notes={thisExercise.notes} clef={thisExercise.clef} keySig={thisExercise.keySig}
                                     tempo={thisExercise.tempo} baseValue={thisExercise.baseValue} transposition={thisExercise.transposition} headerText={thisExercise.headerText}
-                                    meter={thisExercise.meter}
+                                    meter={thisExercise.meter} nextExercise={nextExercise} currentExercise={props.exercise}
                                 />
                             )
+                        case "chord":
+                            return <QuestionCardChord instructions={thisExercise.instructions} headerText={thisExercise.headerText} clef={thisExercise.clef}
+                                keySig={thisExercise.keySig} notes={thisExercise.notes} chordNotation={thisExercise.chordNotation}
+                                nextExercise={nextExercise} currentExercise={props.exercise}
+                            />
                         default:
                             return (
                                 <>

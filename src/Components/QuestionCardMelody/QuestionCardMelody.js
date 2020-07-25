@@ -25,10 +25,16 @@ function QuestionCardMelody(props) {
         } else {
             setAnswered(2);
         }
+        //reset the global userAnswer state
+        dispatch({
+            type: "UPDATE_USER_ANSWER",
+            userAnswer: ""
+        });
     }
 
     switch (answered) {
         case 0:
+            console.log(props.meter);
             return (
                 <>
                     <Modal.Body>
@@ -39,12 +45,12 @@ function QuestionCardMelody(props) {
                         </div>
                         <div className="row">
                             <div className="col-12">
-                                <MelodyCard notes={props.notes} clef={props.clef} keySig={props.keySig} tempo={props.tempo} baseValue={props.baseVale} transposition={props.transposition} meter={props.meter} />
+                                <MelodyCard notes={props.notes} clef={props.clef} keySig={props.keySig} tempo={props.tempo} baseValue={props.baseValue} transposition={props.transposition} meter={props.meter} />
                             </div>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <h5>Your answer: {state.userAnswer ? props.notes[state.userAnswer].dispName : ""}</h5>
+                        <h5>{state.userAnswer ? "Your answer: " + props.notes[state.userAnswer].dispName : "Select a note."}</h5>
                         <button className="btn btn-danger" value="Flat" onClick={submitAnswer}>Flat</button>
                         <button className="btn btn-success" value="Sharp" onClick={submitAnswer}>Sharp</button>
                     </Modal.Footer>
