@@ -6,6 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
 
 //import custom stylesheet
 import './style.css';
@@ -46,11 +49,14 @@ function TopNav() {
                         </Link>
                     </NavDropdown>
                     <Navbar.Text className="hideMe">/</Navbar.Text>
-                    <Nav.Link target="_blank" href="https://play.google.com/store/apps">Get the app</Nav.Link>
-                    <Navbar.Text className="hideMe">/</Navbar.Text>
                     <Nav.Link href="#">Contact us</Nav.Link>
                     <Navbar.Text className="hideMe">/</Navbar.Text>
                     <Nav.Link href="#">Shout-outs!</Nav.Link>
+                    <Form inline>
+                        <FormControl type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
+                        <FormControl type="password" placeholder="password123" className="mr-sm-2" />
+                        <Button variant="outline-light">Log in</Button>
+                    </Form>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

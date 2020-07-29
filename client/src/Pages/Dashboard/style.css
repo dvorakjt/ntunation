@@ -1,0 +1,23 @@
+table {
+    width: 80%;
+    font-size: large;
+}
+
+th {
+    text-align: start;
+}
+
+td {
+    text-align: start;
+    padding: 5px;
+}
+
+tr:nth-child(odd) {
+    background-color: purple;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: lightgrey;
+    color: black;
+}

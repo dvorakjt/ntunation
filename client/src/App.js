@@ -10,6 +10,7 @@ import { AnswerStoreProvider } from './Utils/AnswerStore';
 //Import custom pages
 import Homepage from './Pages/Homepage/Homepage';
 import SampleExercises from './Pages/SampleExercises/SampleExercises'
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 //Import components
 import ModalPrefab from './Components/Modal/Modal';
@@ -21,6 +22,7 @@ function App() {
         <div className="App">
           <Route exact path="/" component={Homepage} />
           <Route path="/sampleexercises/:exercise" children={<Exercises />} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </div>
       </AnswerStoreProvider>
     </Router>

@@ -1,0 +1,9 @@
+.progressChart {
+    background-color: lavender;
+    text-align: start;
+}
+
+.doughnut {
+    height: 50px;
+    width: 50px;
+}
