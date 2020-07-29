@@ -1,10 +1,10 @@
 /* Navbar is transparent */
 .color-nav {
-    background-color: rgba(0,0,0,0);
+    background-color: purple;
 }
 
 /* Default link color and font. Border radius used when the link is highlight */
-a {
+nav a {
     color: rgb(223, 223, 223);
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
@@ -14,7 +14,7 @@ a {
 }
 
 /*highlight a with a slightly darker background and brighter text when hovering, fully expanded navbar only and not brand */
-a:hover {
+nav a:hover {
     /* highlight links when hovering over them */
     background-color: rgba(0,0,0,.6);
     color: white;
@@ -34,7 +34,7 @@ a:hover {
         
     }
 
-    a:hover {
+    nav a:hover {
         color:white;
         background-color: rgba(0,0,0,0);
     }

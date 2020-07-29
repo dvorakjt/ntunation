@@ -1,9 +1,32 @@
-.progressChart {
-    background-color: lavender;
-    text-align: start;
+.miniDoughnut {
+    height: 80%;
+    width:80%;
 }
 
-.doughnut {
-    height: 50px;
-    width: 50px;
+.cell1 {
+    width: 9%;
+    padding-left: 10px;
+}
+
+.cell2 {
+    width: 10%;
+    padding-top: 5px;
+    padding-bottom: 13px;
+}
+
+.cell3 {
+    width: 27%;
+}
+
+.cell4 {
+    width: 27%;
+}
+
+.cell5 {
+    width: 27%;
+}
+
+.fa-check {
+    color: #68fc65;
+    margin-left: 5px;
 }

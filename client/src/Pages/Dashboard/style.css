@@ -1,6 +1,9 @@
 table {
     width: 80%;
     font-size: large;
+    box-shadow: 10px 15px 10px rgb(190, 190, 190);
+    border: 1px solid lightgrey;
+    margin: auto;
 }
 
 th {
@@ -12,12 +15,10 @@ td {
     padding: 5px;
 }
 
-tr:nth-child(odd) {
-    background-color: purple;
-    color: white;
-}
-
 tr:nth-child(even) {
     background-color: lightgrey;
-    color: black;
+}
+
+#exercisesH1 {
+    margin-top: 20px;
 }

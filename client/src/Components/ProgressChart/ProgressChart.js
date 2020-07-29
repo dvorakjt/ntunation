@@ -1,11 +1,10 @@
 import React from 'react';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import './style.css';
 
 function ProgressChart(props) {
 
     const doughnutData = {
-        labels: ["Correct", "Incorrect"],
         datasets: [{
             backgroundColor: ["#68fc65", "#cc0300"],
             hoverBackgroundColor: ["#92fc90", "#ed0400"],
@@ -14,26 +13,21 @@ function ProgressChart(props) {
     }
 
     return (
-        <div className="progressChart">
-            <h3>{props.category}</h3>
-            <Doughnut
-                className="doughnut"
+        <tr key={props.category}>
+            <td className="cell1"><h3>{props.category}</h3></td>
+            <td className="cell2"><Doughnut
+                className="miniDoughnut"
                 data={doughnutData}
                 options={{
-                    title: {
-                        display: true,
-                        text: props.category
-                    },
-                    legend: {
-                        display: true,
-                        text: `${props.totalCorrect} correct out of ${props.totalAttempts} questions answered.`
-                    },
                     maintainAspectRatio: false
                 }}
 
-            />
-
-        </div>
+            /></td>
+            {/* href will need to go to props.introLink, props.practiceLink, props.quizLink etc */}
+            <td className="cell3"><a href="#">Introduction</a>{(() => {if(props.introComplete) return (<i class="fas fa-check"></i>)})()}</td>
+            <td className="cell4"><a href="#">Practice</a>{(() => {if(props.practiceComplete) return (<i class="fas fa-check"></i>)})()}</td>
+            <td className="cell5"><a href="#">Quiz{(() => {if(props.quizComplete) return (<i class="fas fa-check"></i>)})()}</a></td>
+        </tr>
     )
 }
 
