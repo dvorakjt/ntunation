@@ -1,6 +1,8 @@
 import React from 'react';
 import TopNav from '../../Components/TopNav/TopNav';
 import ProgressChart from '../../Components/ProgressChart/ProgressChart';
+import NonChartTr from '../../Components/NonChartTr/NonChartTr';
+import { Link } from 'react-router-dom';
 
 import './style.css';
 
@@ -14,9 +16,7 @@ function Dashboard() {
             <h1 id="exercisesH1">Exercises</h1>
             <table>
                 <tbody>
-                    <tr>
-                        <td><a href="#">Introduction</a></td>
-                    </tr>
+                    <NonChartTr category="Introduction" link="Start the Intro" complete={true}/>
                     <ProgressChart category="Unisons" introComplete={true} totalCorrect={20} totalWrong={5} totalAttempts={25} />
                     <ProgressChart category="Octaves" totalCorrect={22} totalWrong={3} totalAttempts={25} />
                     <ProgressChart category="Intervals (Melodic, Equal Temperament)" totalCorrect={19} totalWrong={6} totalAttempts={25} />
