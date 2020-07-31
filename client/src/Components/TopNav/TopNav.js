@@ -23,17 +23,6 @@ function TopNav() {
     const location = useLocation();
     const emailRef = useRef();
     const passwordRef = useRef();
-    const nicknameRef = useRef();
-
-    async function signUp(event) {
-        event.preventDefault();
-        const user = {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-            nickname: nicknameRef.current.value
-        }
-        let newUser = await API.createUser(user);
-    }
 
     return (
         <Navbar className="color-nav" variant="dark" expand="lg">
@@ -71,8 +60,7 @@ function TopNav() {
                     <Form inline>
                         <FormControl ref={emailRef} type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
                         <FormControl ref={passwordRef} type="password" placeholder="password123" className="mr-sm-2" />
-                        <FormControl ref= {nicknameRef} type="text" placeholder="What should we call you?" className="mr=sm-2" />
-                        <Button variant="outline-light" onClick={signUp}>Sign up!</Button>
+                        <Button variant="outline-light" >Login</Button>
                     </Form>
                 </Nav>
             </Navbar.Collapse>
