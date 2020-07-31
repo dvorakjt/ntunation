@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const bcrypt = require('bcryptjs');
+const { constants } = require('buffer');
 
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     email: {
         type: String,
-        match: ['^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$', 'Must be a valid email address'],
+        match: [/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/, 'Must be a valid email address'],
         required: true,
         unique: true
     },
@@ -115,12 +116,22 @@ UserSchema.plugin(uniqueValidator);
 
 //before saving the user's password to the db, hash it
 UserSchema.pre('save', function(next) {
-    if(!this.isModified('password')) {
-        return next;
+    const user = this;
+    if (this.isModified('password') || this.isNew) {
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) {
+                return next(err);
+            }
+            bcrypt.hash(user.password, salt, null, function (err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                user.password = hash;
+                next();
+            });
+        });
     } else {
-        const salt = genSaltSync(10);
-        this.password = bcrypt.hashSync(this.password, salt);
-        return next;
+        return next();
     }
 });
 

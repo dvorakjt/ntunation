@@ -1,5 +1,5 @@
 //import react
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 //import react-bootstrap components
@@ -10,6 +10,9 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
+//import API Util
+import API from '../../Utils/API';
+
 //import custom stylesheet
 import './style.css';
 
@@ -18,6 +21,19 @@ import ntunationLogo from '../../Images/ntunation-icon.png';
 
 function TopNav() {
     const location = useLocation();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const nicknameRef = useRef();
+
+    async function signUp(event) {
+        event.preventDefault();
+        const user = {
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+            nickname: nicknameRef.current.value
+        }
+        let newUser = await API.createUser(user);
+    }
 
     return (
         <Navbar className="color-nav" variant="dark" expand="lg">
@@ -53,9 +69,10 @@ function TopNav() {
                     <Navbar.Text className="hideMe">/</Navbar.Text>
                     <Nav.Link href="#">Shout-outs!</Nav.Link>
                     <Form inline>
-                        <FormControl type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
-                        <FormControl type="password" placeholder="password123" className="mr-sm-2" />
-                        <Button variant="outline-light">Log in</Button>
+                        <FormControl ref={emailRef} type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
+                        <FormControl ref={passwordRef} type="password" placeholder="password123" className="mr-sm-2" />
+                        <FormControl ref= {nicknameRef} type="text" placeholder="What should we call you?" className="mr=sm-2" />
+                        <Button variant="outline-light" onClick={signUp}>Sign up!</Button>
                     </Form>
                 </Nav>
             </Navbar.Collapse>
