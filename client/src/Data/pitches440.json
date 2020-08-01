@@ -1,0 +1,542 @@
+[
+    {
+        "pitch": 16.351597831287414,
+        "name": "C,,,,",
+        "dispName": "C0"
+    },
+    {
+        "pitch": 17.323914436054505,
+        "name": "^C,,,,",
+        "dispName": "C♯0"
+    },
+    {
+        "pitch": 18.354047994837977,
+        "name": "D,,,,",
+        "dispName": "D0"
+    },
+    {
+        "pitch": 19.445436482630054,
+        "name": "_E,,,,",
+        "dispName": "Eb0"
+    },
+    {
+        "pitch": 20.601722307054366,
+        "name": "E,,,,",
+        "dispName": "E0"
+    },
+    {
+        "pitch": 21.826764464562746,
+        "name": "F,,,,",
+        "dispName": "F0"
+    },
+    {
+        "pitch": 23.124651419477154,
+        "name": "^F,,,,",
+        "dispName": "F♯0"
+    },
+    {
+        "pitch": 24.499714748859326,
+        "name": "G,,,,",
+        "dispName": "G0"
+    },
+    {
+        "pitch": 25.956543598746574,
+        "name": "^G,,,,",
+        "dispName": "G♯0"
+    },
+    {
+        "pitch": 27.5,
+        "name": "A,,,,",
+        "dispName": "A0"
+    },
+    {
+        "pitch": 29.13523509488062,
+        "name": "_B,,,,",
+        "dispName": "Bb0"
+    },
+    {
+        "pitch": 30.86770632850775,
+        "name": "B,,,,",
+        "dispName": "B0"
+    },
+    {
+        "pitch": 32.70319566257483,
+        "name": "C,,,",
+        "dispName": "C1"
+    },
+    {
+        "pitch": 34.64782887210902,
+        "name": "^C,,,",
+        "dispName": "C♯1"
+    },
+    {
+        "pitch": 36.70809598967594,
+        "name": "D,,,",
+        "dispName": "D1"
+    },
+    {
+        "pitch": 38.89087296526011,
+        "name": "_E,,,",
+        "dispName": "Eb1"
+    },
+    {
+        "pitch": 41.20344461410874,
+        "name": "E,,,",
+        "dispName": "E1"
+    },
+    {
+        "pitch": 43.653528929125486,
+        "name": "F,,,",
+        "dispName": "F1"
+    },
+    {
+        "pitch": 46.24930283895431,
+        "name": "^F,,,",
+        "dispName": "F♯1"
+    },
+    {
+        "pitch": 48.999429497718666,
+        "name": "G,,,",
+        "dispName": "G1"
+    },
+    {
+        "pitch": 51.91308719749314,
+        "name": "^G,,,",
+        "dispName": "G♯1"
+    },
+    {
+        "pitch": 55,
+        "name": "A,,,",
+        "dispName": "A1"
+    },
+    {
+        "pitch": 58.27047018976124,
+        "name": "_B,,,",
+        "dispName": "Bb1"
+    },
+    {
+        "pitch": 61.7354126570155,
+        "name": "B,,,",
+        "dispName": "B1"
+    },
+    {
+        "pitch": 65.40639132514966,
+        "name": "C,,",
+        "dispName": "C2"
+    },
+    {
+        "pitch": 69.29565774421803,
+        "name": "^C,,",
+        "dispName": "C♯2"
+    },
+    {
+        "pitch": 73.41619197935188,
+        "name": "D,,",
+        "dispName": "D2"
+    },
+    {
+        "pitch": 77.78174593052022,
+        "name": "_E,,",
+        "dispName": "Eb2"
+    },
+    {
+        "pitch": 82.40688922821748,
+        "name": "E,,",
+        "dispName": "E2"
+    },
+    {
+        "pitch": 87.30705785825097,
+        "name": "F,,",
+        "dispName": "F2"
+    },
+    {
+        "pitch": 92.49860567790861,
+        "name": "^F,,",
+        "dispName": "F♯2"
+    },
+    {
+        "pitch": 97.99885899543733,
+        "name": "G,,",
+        "dispName": "G2"
+    },
+    {
+        "pitch": 103.82617439498628,
+        "name": "^G,,",
+        "dispName": "G♯2"
+    },
+    {
+        "pitch": 110,
+        "name": "A,,",
+        "dispName": "A2"
+    },
+    {
+        "pitch": 116.54094037952248,
+        "name": "_B,,",
+        "dispName": "Bb2"
+    },
+    {
+        "pitch": 123.47082531403103,
+        "name": "B,,",
+        "dispName": "B2"
+    },
+    {
+        "pitch": 130.8127826502993,
+        "name": "C,",
+        "dispName": "C3"
+    },
+    {
+        "pitch": 138.59131548843604,
+        "name": "^C,",
+        "dispName": "C♯3"
+    },
+    {
+        "pitch": 146.8323839587038,
+        "name": "D,",
+        "dispName": "D3"
+    },
+    {
+        "pitch": 155.56349186104043,
+        "name": "_E,",
+        "dispName": "Eb3"
+    },
+    {
+        "pitch": 164.81377845643496,
+        "name": "E,",
+        "dispName": "E3"
+    },
+    {
+        "pitch": 174.61411571650194,
+        "name": "F,",
+        "dispName": "F3"
+    },
+    {
+        "pitch": 184.99721135581723,
+        "name": "^F,",
+        "dispName": "F♯3"
+    },
+    {
+        "pitch": 195.99771799087463,
+        "name": "G,",
+        "dispName": "G3"
+    },
+    {
+        "pitch": 207.65234878997256,
+        "name": "^G,",
+        "dispName": "G♯3"
+    },
+    {
+        "pitch": 220,
+        "name": "A,",
+        "dispName": "A3"
+    },
+    {
+        "pitch": 233.08188075904496,
+        "name": "_B,",
+        "dispName": "Bb3"
+    },
+    {
+        "pitch": 246.94165062806206,
+        "name": "B,",
+        "dispName": "B3"
+    },
+    {
+        "pitch": 261.6255653005986,
+        "name": "C",
+        "dispName": "C4"
+    },
+    {
+        "pitch": 277.1826309768721,
+        "name": "^C",
+        "dispName": "C♯4"
+    },
+    {
+        "pitch": 293.6647679174076,
+        "name": "D",
+        "dispName": "D4"
+    },
+    {
+        "pitch": 311.12698372208087,
+        "name": "_E",
+        "dispName": "Eb4"
+    },
+    {
+        "pitch": 329.6275569128699,
+        "name": "E",
+        "dispName": "E4"
+    },
+    {
+        "pitch": 349.2282314330039,
+        "name": "F",
+        "dispName": "F4"
+    },
+    {
+        "pitch": 369.99442271163446,
+        "name": "^F",
+        "dispName": "F♯4"
+    },
+    {
+        "pitch": 391.99543598174927,
+        "name": "G",
+        "dispName": "G4"
+    },
+    {
+        "pitch": 415.3046975799451,
+        "name": "^G",
+        "dispName": "G♯4"
+    },
+    {
+        "pitch": 440,
+        "name": "A",
+        "dispName": "A4"
+    },
+    {
+        "pitch": 466.1637615180899,
+        "name": "_B",
+        "dispName": "Bb4"
+    },
+    {
+        "pitch": 493.8833012561241,
+        "name": "B",
+        "dispName": "B4"
+    },
+    {
+        "pitch": 523.2511306011972,
+        "name": "c",
+        "dispName": "C5"
+    },
+    {
+        "pitch": 554.3652619537442,
+        "name": "^c",
+        "dispName": "C♯5"
+    },
+    {
+        "pitch": 587.3295358348151,
+        "name": "d",
+        "dispName": "D5"
+    },
+    {
+        "pitch": 622.2539674441618,
+        "name": "_e",
+        "dispName": "Eb5"
+    },
+    {
+        "pitch": 659.2551138257398,
+        "name": "e",
+        "dispName": "E5"
+    },
+    {
+        "pitch": 698.4564628660078,
+        "name": "f",
+        "dispName": "F5"
+    },
+    {
+        "pitch": 739.9888454232689,
+        "name": "^f",
+        "dispName": "F♯5"
+    },
+    {
+        "pitch": 783.9908719634986,
+        "name": "g",
+        "dispName": "G5"
+    },
+    {
+        "pitch": 830.6093951598903,
+        "name": "^g",
+        "dispName": "G♯5"
+    },
+    {
+        "pitch": 880,
+        "name": "a",
+        "dispName": "A5"
+    },
+    {
+        "pitch": 932.3275230361799,
+        "name": "_b",
+        "dispName": "Bb5"
+    },
+    {
+        "pitch": 987.7666025122483,
+        "name": "b",
+        "dispName": "B5"
+    },
+    {
+        "pitch": 1046.5022612023945,
+        "name": "c'",
+        "dispName": "C6"
+    },
+    {
+        "pitch": 1108.7305239074883,
+        "name": "^c'",
+        "dispName": "C♯6"
+    },
+    {
+        "pitch": 1174.6590716696303,
+        "name": "d'",
+        "dispName": "D6"
+    },
+    {
+        "pitch": 1244.5079348883235,
+        "name": "_e'",
+        "dispName": "Eb6"
+    },
+    {
+        "pitch": 1318.5102276514797,
+        "name": "e'",
+        "dispName": "E6"
+    },
+    {
+        "pitch": 1396.9129257320155,
+        "name": "f'",
+        "dispName": "F6"
+    },
+    {
+        "pitch": 1479.9776908465378,
+        "name": "^f'",
+        "dispName": "F♯6"
+    },
+    {
+        "pitch": 1567.981743926997,
+        "name": "g'",
+        "dispName": "G6"
+    },
+    {
+        "pitch": 1661.2187903197805,
+        "name": "^g'",
+        "dispName": "G♯6"
+    },
+    {
+        "pitch": 1760,
+        "name": "a'",
+        "dispName": "A6"
+    },
+    {
+        "pitch": 1864.6550460723597,
+        "name": "_b'",
+        "dispName": "Bb6"
+    },
+    {
+        "pitch": 1975.533205024496,
+        "name": "b'",
+        "dispName": "B6"
+    },
+    {
+        "pitch": 2093.004522404789,
+        "name": "c''",
+        "dispName": "C7"
+    },
+    {
+        "pitch": 2217.461047814977,
+        "name": "^c''",
+        "dispName": "C♯7"
+    },
+    {
+        "pitch": 2349.31814333926,
+        "name": "d''",
+        "dispName": "D7"
+    },
+    {
+        "pitch": 2489.015869776647,
+        "name": "_e''",
+        "dispName": "Eb7"
+    },
+    {
+        "pitch": 2637.0204553029594,
+        "name": "e''",
+        "dispName": "E7"
+    },
+    {
+        "pitch": 2793.825851464031,
+        "name": "f''",
+        "dispName": "F7"
+    },
+    {
+        "pitch": 2959.9553816930757,
+        "name": "^f''",
+        "dispName": "F♯7"
+    },
+    {
+        "pitch": 3135.9634878539946,
+        "name": "g''",
+        "dispName": "G7"
+    },
+    {
+        "pitch": 3322.437580639561,
+        "name": "^g''",
+        "dispName": "G♯7"
+    },
+    {
+        "pitch": 3520,
+        "name": "a''",
+        "dispName": "A7"
+    },
+    {
+        "pitch": 3729.3100921447194,
+        "name": "_b''",
+        "dispName": "Bb7"
+    },
+    {
+        "pitch": 3951.066410048992,
+        "name": "b''",
+        "dispName": "B7"
+    },
+    {
+        "pitch": 4186.009044809578,
+        "name": "c'''",
+        "dispName": "C8"
+    },
+    {
+        "pitch": 4434.922095629954,
+        "name": "^c'''",
+        "dispName": "C♯8"
+    },
+    {
+        "pitch": 4698.63628667852,
+        "name": "d'''",
+        "dispName": "D8"
+    },
+    {
+        "pitch": 4978.031739553294,
+        "name": "_e'''",
+        "dispName": "Eb8"
+    },
+    {
+        "pitch": 5274.040910605919,
+        "name": "e'''",
+        "dispName": "E8"
+    },
+    {
+        "pitch": 5587.651702928062,
+        "name": "f'''",
+        "dispName": "F8"
+    },
+    {
+        "pitch": 5919.910763386151,
+        "name": "^f'''",
+        "dispName": "F♯8"
+    },
+    {
+        "pitch": 6271.926975707989,
+        "name": "g'''",
+        "dispName": "G8"
+    },
+    {
+        "pitch": 6644.875161279122,
+        "name": "^g'''",
+        "dispName": "G♯8"
+    },
+    {
+        "pitch": 7040,
+        "name": "a'''",
+        "dispName": "A8"
+    },
+    {
+        "pitch": 7458.620184289437,
+        "name": "_b'''",
+        "dispName": "Bb8"
+    },
+    {
+        "pitch": 7902.132820097988,
+        "name": "b'''",
+        "dispName": "B8"
+    }
+]
