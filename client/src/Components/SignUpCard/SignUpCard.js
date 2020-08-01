@@ -9,10 +9,18 @@ import Alert from 'react-bootstrap/Alert';
 //import API Util
 import API from '../../Utils/API';
 
+//import global user store
+import { useUserStoreContext } from '../../Utils/UserStore';
+
 //import stylesheet
 import './style.css';
 
+const axios = require('axios'); //there are routes in both this file and the topnav that need to be moved to the api
+
 function SignUpCard() {
+    //hook into global user store
+    const [state, dispatch] = useUserStoreContext();
+
     //states for showing the alert, what text to show
     const [show, setShow] = useState(false);
     const [textState, setTextState] = useState();
@@ -94,6 +102,41 @@ function SignUpCard() {
         setAlertVariant("success");
         setTextState(5);
         setShow(true);
+
+        const { email, password } = user;
+
+        axios.post('/login', { email, password })
+            .then((result) => {
+                localStorage.setItem('jwtToken', result.data.token);
+                axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+                axios.get(`/api/user/${email}`)
+                    .then(res => {
+                        console.log(res.data);
+                        const user = res.data;
+                        //convert the user info to a string and save to localstorage so that it persists upon refresh
+                        const lsUser = JSON.stringify(user);
+                        localStorage.setItem('lsUser', lsUser);
+                        dispatch({
+                            type: "LOGIN",
+                            user: user
+                        });
+                        /*here we should get the user's info and set the global state equal to it. then redirect
+                the user to the dashboard page, which always takes the global user state as props.
+                alternatively, the page could be reloaded. The '/' route could use a switch statement to redirect the
+                user to the homepage or their dashboard depending on the login state.
+                */
+                    })
+                    .catch((error) => {
+                        if (error.response.status === 401) {
+                            console.log(error);
+                        }
+                    });
+            })
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    this.setState({ message: 'Login failed. Username or password not match' });
+                }
+            });
     }
 
     return (

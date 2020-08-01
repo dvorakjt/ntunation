@@ -33,7 +33,16 @@ function TopNav(props) {
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const onClick = e => {
+    const onLogout = e => {
+        e.preventDefault();
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('lsUser');
+        dispatch({
+            type: "LOGOUT"
+        });
+    }
+
+    const onLogin = e => {
         e.preventDefault();
 
         const email = emailRef.current.value;
@@ -49,6 +58,9 @@ function TopNav(props) {
                         .then(res => {
                             console.log(res.data);
                             const user = res.data;
+                            //convert the user data to a string & save to local storage so that it persists upon refresh
+                            const lsUser = JSON.stringify(user);
+                            localStorage.setItem('lsUser', lsUser);
                             dispatch({
                                 type: "LOGIN",
                                 user: user
@@ -106,12 +118,25 @@ function TopNav(props) {
                     <Nav.Link href="#">Contact us</Nav.Link>
                     <Navbar.Text className="hideMe">/</Navbar.Text>
                     <Nav.Link href="#">Shout-outs!</Nav.Link>
-                    <Form inline>
-                        <FormControl ref={emailRef} type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
-                        <FormControl ref={passwordRef} type="password" placeholder="password123" className="mr-sm-2" />
-                        <Button variant="outline-light" onClick={onClick}>Login</Button>
-                    </Form>
-                    <Navbar.Text >{state.loggedIn ? "Logged in!" : "not logged in :("}</Navbar.Text>
+                    {(() => {
+                        if (!state.loggedIn) {
+                            return (
+                                <Form inline>
+                                    <FormControl ref={emailRef} type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
+                                    <FormControl ref={passwordRef} type="password" placeholder="password123" className="mr-sm-2" />
+                                    <Button variant="outline-light" onClick={onLogin}>Login</Button>
+                                </Form>
+                            )
+                        } else {
+                            return (
+                                <>
+                                    <Navbar.Text className="hideMe">/</Navbar.Text>
+                                    <Navbar.Text>{`Welcome, ${state.user.nickname}`}</Navbar.Text>
+                                    <Button variant="outline-light" onClick={onLogout}>Logout</Button>
+                                </>
+                            )
+                        }
+                    })()}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
 
 //Import custom pages
@@ -13,6 +13,23 @@ function ClientRouter() {
     //hook into global user store
     const [state, dispatch] = useUserStoreContext();
 
+    useEffect(() => {
+        //when the component mounts, check if there is a user saved to localstorage. if so, perform the login 
+        //dispatch call
+        let lsUser = localStorage.getItem('lsUser');
+        const token = localStorage.getItem('jwtToken');
+
+        //i may want to add an axios call to verify that the token and user match
+        if (lsUser && token) {
+            //parse the user back into an object
+            lsUser = JSON.parse(lsUser);
+            //update global state
+            dispatch({
+                type: "LOGIN",
+                user: lsUser
+            })
+        }
+    }, [])
     return (
         <Router>
             {(() => {
