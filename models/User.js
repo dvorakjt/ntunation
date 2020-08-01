@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt-nodejs');
 const { constants } = require('buffer');
 
 const Schema = mongoose.Schema;
@@ -37,85 +37,85 @@ const UserSchema = new Schema({
     },
     //categories complete
     //intro
-    introComplete : {
+    introComplete: {
         type: Boolean,
         default: false
     },
     //unisons
     unisons: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
 
     },
     octaves: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     },
     //equal temperament melodic
     intervalsMelEq: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     },
     //equal temperament harmonic
     intervalsHrmEq: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     },
     //just temperament harmonic
     intervalsHrmJst: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     },
     scales: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     },
     chords: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     },
     melody: {
-        attempts: {type: Number, default: 0},
-        correct: {type: Number, default: 0},
-        wrong: {type: Number, default: 0},
-        introDone: {type: Boolean, default: false},
-        practiceDone: {type: Boolean, default: false},
-        quizDone: {type: Boolean, default: false}
+        attempts: { type: Number, default: 0 },
+        correct: { type: Number, default: 0 },
+        wrong: { type: Number, default: 0 },
+        introDone: { type: Boolean, default: false },
+        practiceDone: { type: Boolean, default: false },
+        quizDone: { type: Boolean, default: false }
     }
 })
 
 UserSchema.plugin(uniqueValidator);
 
 //before saving the user's password to the db, hash it
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
     const user = this;
     if (this.isModified('password') || this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
@@ -136,7 +136,7 @@ UserSchema.pre('save', function(next) {
 });
 
 //this function determines whether an entered password is correct
-UserSchema.methods.comparePassword = function(plaintext, cb) {
+UserSchema.methods.comparePassword = function (plaintext, cb) {
     return cb(null, bcrypt.compareSync(plaintext, this.password))
 };
 
