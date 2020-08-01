@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 //import react boostrap components
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 //import API Util
 import API from '../../Utils/API';
@@ -12,30 +13,91 @@ import API from '../../Utils/API';
 import './style.css';
 
 function SignUpCard() {
-    let emailRef = useRef();
-    let passwordRef = useRef();
-    let nicknameRef = useRef();
-    let pitchRef = useRef();
-    let difficultyRef = useRef();
+    //states for showing the alert, what text to show
+    const [show, setShow] = useState(false);
+    const [textState, setTextState] = useState();
+    const [alertVariant, setAlertVariant] = useState();
 
+    //array containing possible text to display in the alert
+    const alertText = [
+        "Email address, password and name are required fields.",
+        "You must enter a valid email address.",
+        "This email is already in use.",
+        "Password must be between 12 and 128 characters long.",
+        "Your name must not be longer than 20 characters.",
+        "Account created. Logging in..."
+    ]
+
+    //references to input fields
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const nicknameRef = useRef();
+
+    //this runs when the user tries to sign up
     async function signUp(event) {
+        //prevent refreshing
         event.preventDefault();
-        //basic safeguard to prevent user from signing up without any of these 3 fields
+
+        const emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+        //client-side validation!
         if (!emailRef.current.value || !passwordRef.current.value || !nicknameRef.current.value) {
+            setAlertVariant("danger");
+            setTextState(0);
+            setShow(true);
+            return;
+        } else if (!emailRegex.test(emailRef.current.value)) {
+            setAlertVariant("danger");
+            setTextState(1);
+            setShow(true);
+            return;
+        } else if (passwordRef.current.value.length < 12 || passwordRef.current.value.length > 128) {
+            setAlertVariant("danger");
+            setTextState(3);
+            setShow(true);
+            return;
+        } else if (nicknameRef.current.value.length > 20) {
+            setAlertVariant("danger");
+            setTextState(4);
+            setShow(true);
             return;
         }
+
+        //grab the pitch preference value
+        const pitchRadio = document.querySelectorAll('input[name="pitch"]');
+        let pitch;
+        pitchRadio.forEach(radio => {
+            if (radio.checked) {
+                pitch = radio.value;
+            }
+        });
+
+        //grab the difficulty preference value
+        const diffRadio = document.querySelectorAll('input[name="difficulty"]');
+        let difficulty;
+        diffRadio.forEach(radio => {
+            if (radio.checked) {
+                difficulty = radio.value;
+            }
+        });
+
+        //now, create a user...
         const user = {
             email: emailRef.current.value,
             password: passwordRef.current.value,
             nickname: nicknameRef.current.value,
-            pitch: Number(pitchRef.current.value),
-            difficulty: Number(difficultyRef.current.value)
+            pitch: Number(pitch),
+            difficulty: Number(difficulty)
         }
         let newUser = await API.createUser(user);
+        //if successful show a success alert and log the user in?
+        setAlertVariant("success");
+        setTextState(5);
+        setShow(true);
     }
 
     return (
-        <Form className="card" id="signUpCard">
+        <Form className="card" id="signUpCard" >
             <h3 className="card-title">New user? Sign up here!</h3>
             <label htmlFor="email">Email:</label>
             <FormControl id="email" name="email" ref={emailRef} type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
@@ -54,7 +116,10 @@ function SignUpCard() {
                 <input className="form-check-input" type="radio" id="medium" name="difficulty" value="2" /><label className="form-check-label" htmlFor="medium">Medium</label><br />
                 <input className="form-check-input" type="radio" id="hard" name="difficulty" value="3" /><label className="form-check-label" htmlFor="medium">Hard</label><br />
             </div>
-            <Button variant="success" >Sign Up!</Button>
+            <Button variant="success" onClick={signUp}>Sign Up!</Button>
+            <Alert variant={alertVariant} show={show} className="fade in" id="alert">
+                <Alert.Heading>{alertText[textState]}</Alert.Heading>
+            </Alert>
         </Form>
     )
 }
