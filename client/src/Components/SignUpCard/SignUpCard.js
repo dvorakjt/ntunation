@@ -98,6 +98,7 @@ function SignUpCard() {
             difficulty: Number(difficulty)
         }
         let newUser = await API.createUser(user);
+        console.log(newUser);
         //if successful show a success alert and log the user in?
         setAlertVariant("success");
         setTextState(5);
