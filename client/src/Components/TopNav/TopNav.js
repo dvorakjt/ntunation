@@ -19,10 +19,48 @@ import './style.css';
 //import the logo
 import ntunationLogo from '../../Images/ntunation-icon.png';
 
-function TopNav() {
+//require axios!
+const axios = require('axios');
+
+function TopNav(props) {
     const location = useLocation();
     const emailRef = useRef();
     const passwordRef = useRef();
+
+    const onClick = e => {
+        e.preventDefault();
+
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        //make sure the inputs are not empty
+        if (email && password) {
+            axios.post('/login', { email, password })
+                .then((result) => {
+                    localStorage.setItem('jwtToken', result.data.token);
+                    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+                    axios.get(`/api/user/${email}`)
+                        .then(res => {
+                            console.log(res);
+                            /*here we should get the user's info and set the global state equal to it. then redirect
+                    the user to the dashboard page, which always takes the global user state as props.
+                    alternatively, the page could be reloaded. The '/' route could use a switch statement to redirect the
+                    user to the homepage or their dashboard depending on the login state.
+                    */
+                        })
+                        .catch((error) => {
+                            if (error.response.status === 401) {
+                                console.log(error);
+                            }
+                        });
+                })
+                .catch((error) => {
+                    if (error.response.status === 401) {
+                        this.setState({ message: 'Login failed. Username or password not match' });
+                    }
+                });
+        }
+    }
 
     return (
         <Navbar className="color-nav" variant="dark" expand="lg">
@@ -60,7 +98,7 @@ function TopNav() {
                     <Form inline>
                         <FormControl ref={emailRef} type="email" placeholder="musician@ntunation.com" className="mr-sm-2" />
                         <FormControl ref={passwordRef} type="password" placeholder="password123" className="mr-sm-2" />
-                        <Button variant="outline-light" >Login</Button>
+                        <Button variant="outline-light" onClick={onClick}>Login</Button>
                     </Form>
                 </Nav>
             </Navbar.Collapse>

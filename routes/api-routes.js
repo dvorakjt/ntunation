@@ -7,7 +7,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 
 module.exports = function (app) {
-  // will need to set up passport and create a login in route, but first I want to create an add  user route
+  /////////////////////////////////////////////////SIGN UP ROUTE//////////////////////////////////////////////
   app.post('/api/users', (req, res) => {
     if (!req.body.email || !req.body.password) {
       res.json({ success: false, msg: 'Please pass username and password.' });
@@ -29,6 +29,7 @@ module.exports = function (app) {
     }
   });
 
+  ////////////////////////////////////////////////LOGIN ROUTE/////////////////////////////////////////////////
   app.post('/login', function (req, res) {
     User.findOne({
       email: req.body.email
@@ -53,11 +54,11 @@ module.exports = function (app) {
     });
   });
 
-  //authorization protected user route
-  app.get('/api/user/:id', passport.authenticate('jwt', { session: false }), function (req, res) {
+  ///////////////////////////////////AUTH PROTECTED ROUTE && GET TOKEN FUNCTION//////////////////////////////////
+  app.get('/api/user/:email', passport.authenticate('jwt', { session: false }), function (req, res) {
     const token = getToken(req.headers);
     if (token) {
-      User.findOne({ _id: req.params.id }, function (err, user) {
+      User.findOne({ email: req.params.email }, function (err, user) {
         if (err) return next(err);
         else if (jwt.sign(user.toJSON(), settings.secret) === token) { //otherwise, check that the user and token match
           res.json(user);
@@ -68,7 +69,21 @@ module.exports = function (app) {
     }
   });
 
-  //for testing only
+  //get token function
+  getToken = function (headers) {
+    if (headers && headers.authorization) {
+      const parted = headers.authorization.split(' ');
+      if (parted.length === 2) {
+        return parted[1];
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  };
+
+  //////////////////////////////////////////////////for testing only//////////////////////////////////////////
   app.get('/api/users', (req, res) => {
     User.find({}).then(
       results => {
