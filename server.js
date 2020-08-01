@@ -22,7 +22,8 @@ app.get("*", (req, res) => {
 });
 
 //connect to the db
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ntunationDb");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ntunationDb");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://ntunation:AjdJtdMjdMdJm94611@ds159507.mlab.com:59507/heroku_tf6zmn32");
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
