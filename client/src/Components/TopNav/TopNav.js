@@ -13,6 +13,9 @@ import Button from 'react-bootstrap/Button';
 //import API Util
 import API from '../../Utils/API';
 
+//import global user store
+import { useUserStoreContext } from '../../Utils/UserStore';
+
 //import custom stylesheet
 import './style.css';
 
@@ -23,6 +26,9 @@ import ntunationLogo from '../../Images/ntunation-icon.png';
 const axios = require('axios');
 
 function TopNav(props) {
+    //hook into global user store
+    const [state, dispatch] = useUserStoreContext();
+
     const location = useLocation();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -41,7 +47,12 @@ function TopNav(props) {
                     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
                     axios.get(`/api/user/${email}`)
                         .then(res => {
-                            console.log(res);
+                            console.log(res.data);
+                            const user = res.data;
+                            dispatch({
+                                type: "LOGIN",
+                                user: user
+                            });
                             /*here we should get the user's info and set the global state equal to it. then redirect
                     the user to the dashboard page, which always takes the global user state as props.
                     alternatively, the page could be reloaded. The '/' route could use a switch statement to redirect the
@@ -100,6 +111,7 @@ function TopNav(props) {
                         <FormControl ref={passwordRef} type="password" placeholder="password123" className="mr-sm-2" />
                         <Button variant="outline-light" onClick={onClick}>Login</Button>
                     </Form>
+                    <Navbar.Text >{state.loggedIn ? "Logged in!" : "not logged in :("}</Navbar.Text>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
