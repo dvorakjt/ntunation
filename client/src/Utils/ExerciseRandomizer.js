@@ -4,6 +4,7 @@ const notes442 = require('../Data/pitches442.json');
 //require randomizers
 const genUnisons = require('./Randomizers/unisons');
 const genOctaves = require('./Randomizers/octaves');
+const genScales = require('./Randomizers/scales');
 
 module.exports = function (category, difficulty, pitchLevel) {
     //first, use the user preferences to decide which 
@@ -30,6 +31,9 @@ module.exports = function (category, difficulty, pitchLevel) {
         }
         case "Octaves": {
             return genOctaves(difficulty, allNotes);
+        }
+        case "Scales": {
+            return genScales(difficulty, allNotes);
         }
     }
 }
