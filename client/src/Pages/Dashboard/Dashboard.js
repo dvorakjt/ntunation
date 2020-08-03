@@ -1,27 +1,101 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TopNav from '../../Components/TopNav/TopNav';
 import ProgressChart from '../../Components/ProgressChart/ProgressChart';
 import NonChartTr from '../../Components/NonChartTr/NonChartTr';
+import ModalPrefab from '../../Components/Modal/Modal';
+import QuestionCardMelody from '../../Components/QuestionCardMelody/QuestionCardMelody';
+import QuestionCard2Notes from '../../Components/QuestionCard2Notes/QuestionCard2Notes';
+import QuestionCardChord from '../../Components/QuestionCardChord/QuestionCard2Chord';
+import InfoCard from '../../Components/InfoCard/InfoCard';
 
 //import global user store
 import { useUserStoreContext } from '../../Utils/UserStore';
+//import answerstore 
+import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
 import './style.css';
 
-//Dashboard will use the global user state to determine the information it needs
+//require in the exercise randomizer
+const genRandomQuestions = require('../../Utils/ExerciseRandomizer');
 
+//Dashboard will use the global user state to determine the information it needs
 function Dashboard() {
+    //Grab the state const and the dispatch methods from the answer store
+    let [state, dispatch] = useAnswerStoreContext();
+    const answerState = state;
+    const answerDispatch = dispatch;
+
     //hook into global user store
-    const [state, dispatch] = useUserStoreContext();
+    [state, dispatch] = useUserStoreContext();
 
     const { user } = state;
-    const { nickname, introComplete, unisons, octaves, intervalsMelEq, intervalsHrmEq, intervalsHrmJst, scales, chords, melody } = user;
+    const { nickname, difficulty, pitch, introComplete, unisons, octaves, intervalsMelEq, intervalsHrmEq, intervalsHrmJst, scales, chords, melody } = user;
 
-    console.log(user);
+    //modal display state
+    const [modalDisplay, setModalDisplay] = useState(true);
+
+    const questions = genRandomQuestions("Intervals - Harmonic, Equal Temperament", difficulty, pitch)
+
+    //set question state
+    const [currentQuestions, setCurrentQuestions] = useState({
+        categoryTitle: "Intervals - Harmonic, Equal Temperament",
+        cardType: "chord",
+        questions: questions,
+        currentIndex: 0
+    })
+
+    console.log(currentQuestions.questions);
 
     return (
         <>
             <TopNav />
+            {(() => {
+                //if the modal should display, display the modal
+                if (modalDisplay) {
+                    return (
+                        <ModalPrefab title={currentQuestions.categoryTitle} >
+                            {(() => {
+
+                                //set this question and next question
+                                const thisExercise = currentQuestions.questions[currentQuestions.currentIndex]
+                                const nextExercise = currentQuestions.questions[currentQuestions.currentIndex + 1]
+
+                                switch (currentQuestions.cardType) {
+                                    case "info":
+                                        return (<InfoCard bodyHeader={thisExercise.bodyHeader} body={thisExercise.body} nextExercise={nextExercise} />)
+                                    case "2Notes":
+                                        return (
+                                            <QuestionCard2Notes instructions={thisExercise.instructions} noteName1={thisExercise.noteName1} noteName2={thisExercise.noteName2}
+                                                pitch1={thisExercise.pitch1} pitch2={thisExercise.pitch2} header1={thisExercise.header1}
+                                                header2={thisExercise.header2} clef1={thisExercise.clef1} clef2={thisExercise.clef2}
+                                                keySig={thisExercise.keySig} slider={thisExercise.slider} sliderMin={thisExercise.sliderMin}
+                                                sliderMax={thisExercise.sliderMax} sliderStep={thisExercise.sliderStep} btn={thisExercise.btn}
+                                                nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex}
+                                            />)
+                                    case "melody":
+                                        return (
+                                            <QuestionCardMelody instructions={thisExercise.instructions} notes={thisExercise.notes} clef={thisExercise.clef} keySig={thisExercise.keySig}
+                                                tempo={thisExercise.tempo} baseValue={thisExercise.baseValue} transposition={thisExercise.transposition} headerText={thisExercise.headerText}
+                                                meter={thisExercise.meter} nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex}
+                                            />
+                                        )
+                                    case "chord":
+                                        return <QuestionCardChord instructions={thisExercise.instructions} headerText={thisExercise.headerText} clef={thisExercise.clef}
+                                            keySig={thisExercise.keySig} notes={thisExercise.notes} chordNotation={thisExercise.chordNotation}
+                                            nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex}
+                                        />
+                                    default:
+                                        return (
+                                            <>
+                                                <p>Nothing to display yet.</p>
+                                            </>
+                                        )
+                                }
+                            })()}
+                        </ModalPrefab>
+                    )
+                }
+            })()}
             <h1>{`Welcome, ${nickname}!`}</h1>
             <h1 id="exercisesH1">Exercises</h1>
             <table>

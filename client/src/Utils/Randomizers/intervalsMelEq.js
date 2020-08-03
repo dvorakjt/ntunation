@@ -94,7 +94,7 @@ module.exports = (difficulty, notes) => {
             sharpOrFlat = "Flat"
         }
 
-        answer = sharpOrFlat;
+        const answer = sharpOrFlat;
 
         //finally return an object to represent each question
         questions.push({
