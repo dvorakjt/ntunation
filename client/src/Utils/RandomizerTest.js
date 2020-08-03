@@ -1,4 +1,4 @@
 const randomizer = require('./ExerciseRandomizer');
 
-const scales = (randomizer("Intervals - Melodic, Equal Temperament", 1, 440));
-console.log(scales);
+const exercises = (randomizer("Chords", 3, 442));
+console.log(exercises);

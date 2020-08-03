@@ -37,6 +37,10 @@ module.exports = (difficulty, notes) => {
             break;
         }
     }
+
+    //get the index of middle C to determine the clef
+    const middleC = selectedNotes.map(({ dispName }) => { return dispName }).indexOf("C4");
+
     let questions = []
     for (let i = 0; i < 10; i++) {
         /*determine the step for sliders. Subract the min step from one more than the max step. For instance,
@@ -54,11 +58,28 @@ module.exports = (difficulty, notes) => {
         do {
             firstIndex = Math.floor(Math.random() * selectedNotes.length);
         } while (firstIndex >= selectedNotes.length - 12)
+
+        //determine the clef for the first note
+        let clef1;
+        if (firstIndex >= middleC) {
+            clef1 = 'treble'
+        } else {
+            clef1 = 'bass'
+        }
+
         //then, set the second index to an octave above the first.
         const secondIndex = firstIndex + 12;
         //set the first and second notes
         const firstNote = selectedNotes[firstIndex];
         let secondNote = selectedNotes[secondIndex];
+
+        //determine the clef for the second note
+        let clef2;
+        if (secondIndex >= middleC) {
+            clef2 = 'treble'
+        } else {
+            clef2 = 'bass'
+        }
 
         //now declare a variable called adjustment that will hold the pitch adjustment, and reroll until it is not 5
         let adjustment;
@@ -99,8 +120,8 @@ module.exports = (difficulty, notes) => {
             pitch2: Number(secondNote.pitch) * Math.pow(2, (adjustment / 1200)),
             header1: `Note 1: ${firstNote.dispName}`,
             header2: `Note 2: ${secondNote.dispName}`,
-            clef1: "treble",
-            clef2: "treble",
+            clef1: clef1,
+            clef2: clef2,
             keySig: "C",
             slider: qtype === "slider" ? true : false,
             sliderMin: qtype === "slider" ? sliderMin : "",

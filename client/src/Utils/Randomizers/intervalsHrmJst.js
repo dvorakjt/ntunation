@@ -2,6 +2,8 @@ const selectRange = require('../PitchNarrower/pitchNarrower');
 
 module.exports = (difficulty, notes) => {
     const intervals = ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "Perfect 4th", "Tritone", "Perfect 5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave"]
+    const multipliers = [1, (25 / 24), (9 / 8), (6 / 5), (5 / 4), (4 / 3), (45 / 32), (3 / 2), (8 / 5), (5 / 3), (9 / 5), (15 / 8), 2]
+    const instructions = "Adjust the slider until the second pitch is in tune."
 
     let minStep;
     let maxStep;
@@ -53,12 +55,12 @@ module.exports = (difficulty, notes) => {
             firstIndex = Math.floor(Math.random() * selectedNotes.length);
         } while (firstIndex >= selectedNotes.length - 12)
 
-        //determine the clef for the first note
-        let clef1;
+        //determine the clef
+        let clef;
         if (firstIndex >= middleC) {
-            clef1 = 'treble'
+            clef = 'treble'
         } else {
-            clef1 = 'bass'
+            clef = 'bass'
         }
 
         //randomize the interval. 0 is a unison, 12 is an octave.
@@ -66,16 +68,13 @@ module.exports = (difficulty, notes) => {
         const secondIndex = firstIndex + interval;
         const intervalType = intervals[interval];
 
-        //determine the clef for the second note
-        let clef2;
-        if (secondIndex >= middleC) {
-            clef2 = 'treble'
-        } else {
-            clef2 = 'bass'
-        }
+        //the multiplier index corresponds to the interval index, second pitch is equal to a multiple of the first pitch
+        const multiplier = multipliers[interval];
+        const pitch = selectedNotes[firstIndex].pitch * multiplier;
 
         const firstNote = selectedNotes[firstIndex];
-        const secondNote = selectedNotes[secondIndex];
+        //set the second note but replace the pitch value with the ratio-based pitch
+        const secondNote = { ...selectedNotes[secondIndex], pitch: pitch }
 
         //now declare a variable called adjustment that will hold the pitch adjustment, and reroll until it is not 5
         let adjustment;
@@ -86,30 +85,21 @@ module.exports = (difficulty, notes) => {
         adjustment = adjustment - 5;
         //multiply the adjustment by the step to get the actual adjustment in cents
         adjustment = adjustment * step
-        //is the adjustment position or negative? if positive, the note is sharp. if negative, the note is flat
-        let sharpOrFlat;
-        if (adjustment > 0) {
-            sharpOrFlat = "Sharp"
-        } else if (adjustment < 0) {
-            sharpOrFlat = "Flat"
-        }
 
-        answer = sharpOrFlat;
+        const answer = -adjustment;
 
         //finally return an object to represent each question
+
         questions.push({
-            instructions: `Identify whether the ${intervalType} is sharp or flat.`,
-            noteName1: firstNote.name,
-            noteName2: secondNote.name,
-            pitch1: Number(firstNote.pitch),
-            pitch2: Number(secondNote.pitch) * Math.pow(2, (adjustment / 1200)),
-            header1: `Note 1: ${firstNote.dispName}`,
-            header2: `Note 2: ${secondNote.dispName}`,
-            clef1: clef1,
-            clef2: clef2,
+            instructions: instructions,
+            headerText: intervalType,
+            clef: clef,
             keySig: "C",
-            slider: false,
-            btn: "sharpOrFlat",
+            chordNotation: `[${firstNote.name}${secondNote.name}4]`,
+            notes: [
+                firstNote,
+                secondNote
+            ],
             answer: answer
         })
     }

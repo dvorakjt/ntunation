@@ -6,6 +6,9 @@ const genUnisons = require('./Randomizers/unisons');
 const genOctaves = require('./Randomizers/octaves');
 const genScales = require('./Randomizers/scales');
 const genIntMelE = require('./Randomizers/intervalsMelEq');
+const genIntHrmE = require('./Randomizers/intervalsHrmEq');
+const genIntHrmJ = require('./Randomizers/intervalsHrmJst');
+const genChords = require('./Randomizers/chords');
 
 module.exports = function (category, difficulty, pitchLevel) {
     //first, use the user preferences to decide which 
@@ -38,6 +41,15 @@ module.exports = function (category, difficulty, pitchLevel) {
         }
         case "Intervals - Melodic, Equal Temperament": {
             return genIntMelE(difficulty, allNotes);
+        }
+        case "Intervals - Harmonic, Equal Temperament": {
+            return genIntHrmE(difficulty, allNotes);
+        }
+        case "Intervals - Harmonic, Just Temperament": {
+            return genIntHrmJ(difficulty, allNotes);
+        }
+        case "Chords": {
+            return genChords(difficulty, allNotes);
         }
     }
 }
