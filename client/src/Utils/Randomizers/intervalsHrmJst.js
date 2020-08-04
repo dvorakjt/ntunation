@@ -1,6 +1,6 @@
-const selectRange = require('../PitchNarrower/pitchNarrower');
+import selectRange from '../PitchNarrower/pitchNarrower';
 
-module.exports = (difficulty, notes) => {
+const genIntHrmJ = (difficulty, notes) => {
     const intervals = ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "Perfect 4th", "Tritone", "Perfect 5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave"]
     const multipliers = [1, (25 / 24), (9 / 8), (6 / 5), (5 / 4), (4 / 3), (45 / 32), (3 / 2), (8 / 5), (5 / 3), (9 / 5), (15 / 8), 2]
     const instructions = "Adjust the slider until the second pitch is in tune."
@@ -113,3 +113,5 @@ module.exports = (difficulty, notes) => {
     }
     return questions;
 }
+
+export default genIntHrmJ;

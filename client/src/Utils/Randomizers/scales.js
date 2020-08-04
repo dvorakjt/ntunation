@@ -1,6 +1,6 @@
-const selectRange = require('../PitchNarrower/pitchNarrower');
+import selectRange from '../PitchNarrower/pitchNarrower';
 
-module.exports = (difficulty, notes) => {
+const genScales = (difficulty, notes) => {
     const instructions = "Identify the note that is out of tune, and whether it is sharp or flat."
 
     const scalePatterns = [
@@ -133,3 +133,5 @@ function buildScale(pitches, pattern, firstIndex) {
     }
     return scale;
 }
+
+export default genScales;

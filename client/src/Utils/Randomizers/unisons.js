@@ -1,6 +1,6 @@
-const selectRange = require('../PitchNarrower/pitchNarrower');
+import selectRange from '../PitchNarrower/pitchNarrower';
 
-module.exports = (difficulty, notes) => {
+const genUnisons = (difficulty, notes) => {
     //an array of all possible instructions
     const instructions = ["Adjust the slider until the second pitch is in tune.",
         "Identify whether the second note is sharp or flat."]
@@ -117,3 +117,5 @@ module.exports = (difficulty, notes) => {
     }
     return questions;
 }
+
+export default genUnisons;

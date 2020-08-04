@@ -1,4 +1,4 @@
-module.exports = (pitches, nadir, zenith) => {
+const selectRange = (pitches, nadir, zenith) => {
     //get the index of the nadir and zenith
     let nIndex, zIndex;
     pitches.forEach((pitch, index) => {
@@ -10,3 +10,5 @@ module.exports = (pitches, nadir, zenith) => {
     //return a new array which is a subset of all the pitches
     return pitches.slice(nIndex, zIndex);
 }
+
+export default selectRange;

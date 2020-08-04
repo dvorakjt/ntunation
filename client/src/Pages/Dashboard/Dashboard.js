@@ -19,7 +19,7 @@ import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 import './style.css';
 
 //require in the exercise randomizer
-const genRandomQuestions = require('../../Utils/ExerciseRandomizer');
+import genRandomQuestions from '../../Utils/ExerciseRandomizer';
 
 //Dashboard will use the global user state to determine the information it needs
 function Dashboard() {

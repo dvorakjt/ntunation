@@ -1,16 +1,15 @@
+import genScales from './Randomizers/scales';
+import genChords from './Randomizers/chords';
+import genUnisons from './Randomizers/unisons';
+import genOctaves from './Randomizers/octaves';
+import genIntMelE from './Randomizers/intervalsMelEq';
+import genIntHrmE from './Randomizers/intervalsHrmEq';
+import genIntHrmJ from './Randomizers/intervalsHrmJst';
+
 const notes440 = require('../Data/pitches440.json');
 const notes442 = require('../Data/pitches442.json');
 
-//require randomizers
-const genUnisons = require('./Randomizers/unisons');
-const genOctaves = require('./Randomizers/octaves');
-const genScales = require('./Randomizers/scales');
-const genIntMelE = require('./Randomizers/intervalsMelEq');
-const genIntHrmE = require('./Randomizers/intervalsHrmEq');
-const genIntHrmJ = require('./Randomizers/intervalsHrmJst');
-const genChords = require('./Randomizers/chords');
-
-module.exports = function (category, difficulty, pitchLevel) {
+const genRandomQuestions = function (category, difficulty, pitchLevel) {
     //first, use the user preferences to decide which 
     let allNotes;
     switch (pitchLevel) {
@@ -53,3 +52,5 @@ module.exports = function (category, difficulty, pitchLevel) {
         }
     }
 }
+
+export default genRandomQuestions;

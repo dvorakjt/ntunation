@@ -1,6 +1,6 @@
-const selectRange = require('../PitchNarrower/pitchNarrower');
+import selectRange from '../PitchNarrower/pitchNarrower';
 
-module.exports = (difficulty, notes) => {
+const genIntMelE = (difficulty, notes) => {
     const intervals = ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "Perfect 4th", "Tritone", "Perfect 5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave"]
 
     let minStep;
@@ -115,3 +115,5 @@ module.exports = (difficulty, notes) => {
     }
     return questions;
 }
+
+export default genIntMelE;
