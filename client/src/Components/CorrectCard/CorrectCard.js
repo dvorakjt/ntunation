@@ -10,7 +10,13 @@ function CorrectCard(props) {
                 <p>Congratulations, you are correct!</p>
             </Modal.Body>
             <Modal.Footer>
-                <Link to={`/sampleexercises/${props.nextExercise}`}><button className="btn btn-success" onClick={() => props.setState(0)}>Next Exercise!</button></Link>
+                {(() => {
+                    if (props.nextExercise.length > 0) {
+                        return (
+                            <Link to={`/sampleexercises/${props.nextExercise}`}><button className="btn btn-success" onClick={() => props.setState(0)}>Next Exercise!</button></Link>
+                        )
+                    }
+                })()}
             </Modal.Footer>
         </>
     )

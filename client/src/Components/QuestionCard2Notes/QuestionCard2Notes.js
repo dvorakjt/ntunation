@@ -81,9 +81,9 @@ function QuestionCard2Notes(props) {
                 </>
             )
         case 1:
-            return <CorrectCard nextExercise={props.nextExercise} setState={setAnswered} />
+            return <CorrectCard nextExercise={props.nextExercise} nextExerciseFunction={props.nextExerciseFunction} setState={setAnswered} />
         case 2:
-            return <WrongCard currentExercise={props.currentExercise} nextExercise={props.nextExercise} setState={setAnswered} />
+            return <WrongCard currentExercise={props.currentExercise} nextExercise={props.nextExercise} nextExerciseFunction={props.nextExerciseFunction} setState={setAnswered} />
         default:
             return (<> </>)
     }
