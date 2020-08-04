@@ -177,17 +177,17 @@
             "notes": [
                 {
                     "pitch": 220,
-                    "abcName": "A,",
+                    "name": "A,",
                     "dispName": "A"
                 },
                 {
                     "pitch": 277.18,
-                    "abcName": "^C",
+                    "name": "^C",
                     "dispName": "C#"
                 },
                 {
                     "pitch": 330,
-                    "abcName": "E",
+                    "name": "E",
                     "dispName": "E"
                 }
             ]

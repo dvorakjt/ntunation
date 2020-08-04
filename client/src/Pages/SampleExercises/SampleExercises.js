@@ -59,7 +59,7 @@ function SampleExercises(props) {
                         case "chord":
                             return <QuestionCardChord instructions={thisExercise.instructions} headerText={thisExercise.headerText} clef={thisExercise.clef}
                                 keySig={thisExercise.keySig} notes={thisExercise.notes} chordNotation={thisExercise.chordNotation}
-                                nextExercise={nextExercise} currentExercise={props.exercise}
+                                nextExercise={nextExercise} currentExercise={props.exercise} sliderStep={3.5} sliderMin={-17.5} sliderMax={17.5}
                             />
                         default:
                             return (
