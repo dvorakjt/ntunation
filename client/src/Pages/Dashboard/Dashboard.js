@@ -95,7 +95,7 @@ function Dashboard() {
                 //if the modal should display, display the modal
                 if (modalDisplay) {
                     return (
-                        <ModalPrefab title={`${currentQuestions.categoryTitle} (Question ${currentQuestions.currentIndex + 1} / ${currentQuestions.questions.length})`} >
+                        <ModalPrefab setDisplay={setModalDisplay} title={`${currentQuestions.categoryTitle} (Question ${currentQuestions.currentIndex + 1} / ${currentQuestions.questions.length})`} >
                             {(() => {
 
                                 //set this question and next question

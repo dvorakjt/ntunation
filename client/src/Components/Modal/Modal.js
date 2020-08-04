@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
@@ -9,10 +9,16 @@ function ModalPrefab(props) {
     const [state, setState] = useState({
         redirect: null
     });
+
     const [show, setShow] = useState(true);
+
     const handleClose = () => {
-        setShow(false);
-        setState({ redirect: "/" });
+        if (!props.setDisplay) {
+            setShow(false);
+            setState({ redirect: "/" });
+        } else {
+            props.setDisplay();
+        }
     }
 
     if (state.redirect) {
