@@ -12,7 +12,7 @@ import WrongCard from '../WrongCard/WrongCard';
 //use the global answer state
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
-function QuestionCard2Notes({ instructions, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise, sliderStep, sliderMin, sliderMax }) {
+function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise, sliderStep, sliderMin, sliderMax }) {
     const [state, dispatch] = useAnswerStoreContext();
     const [answered, setAnswered] = useState(0);
 
@@ -49,9 +49,9 @@ function QuestionCard2Notes({ instructions, headerText, clef, keySig, notes, cho
                 </>
             )
         case 1:
-            return <CorrectCard nextExercise={nextExercise} setState={setAnswered} />
+            return <CorrectCard nextExercise={nextExercise} nextExerciseFunction={nextExerciseFunction} setState={setAnswered} />
         case 2:
-            return <WrongCard currentExercise={currentExercise} nextExercise={nextExercise} setState={setAnswered} />
+            return <WrongCard currentExercise={currentExercise} nextExerciseFunction={nextExerciseFunction} nextExercise={nextExercise} setState={setAnswered} />
         default:
             return (<> </>)
     }

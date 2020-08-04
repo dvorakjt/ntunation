@@ -105,7 +105,7 @@ module.exports = (difficulty, notes) => {
                 firstNote,
                 secondNote
             ],
-            answer: answer,
+            answer: answer.toString(),
             sliderStep: step,
             sliderMin: sliderMin,
             sliderMax: sliderMax

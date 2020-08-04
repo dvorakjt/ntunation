@@ -110,7 +110,7 @@ module.exports = (difficulty, notes) => {
             keySig: "C",
             slider: false,
             btn: "sharpOrFlat",
-            answer: answer
+            answer: answer.toString()
         })
     }
     return questions;

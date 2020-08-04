@@ -112,7 +112,7 @@ module.exports = (difficulty, notes) => {
             sliderMax: qtype === "slider" ? sliderMax : "",
             sliderStep: qtype === "slider" ? step : "",
             btn: qtype === "slider" ? "submit" : "sharpOrFlat",
-            answer: answer
+            answer: answer.toString()
         })
     }
     return questions;

@@ -55,10 +55,18 @@ function Dashboard() {
                 questions: [],
                 currentIndex: 0
             })
+            answerDispatch({
+                type: "UPDATE_CORRECT_ANSWER",
+                correctAnswer: ""
+            })
         } else {
             setCurrentQuestions({
                 ...currentQuestions,
                 currentIndex: index
+            })
+            answerDispatch({
+                type: "UPDATE_CORRECT_ANSWER",
+                correctAnswer: currentQuestions.questions[index].answer
             })
         }
     }
@@ -72,6 +80,10 @@ function Dashboard() {
             cardType: ctype,
             questions: questions,
             currentIndex: 0
+        })
+        answerDispatch({
+            type: "UPDATE_CORRECT_ANSWER",
+            correctAnswer: questions[0].answer
         })
         setModalDisplay(true);
     }
@@ -106,14 +118,15 @@ function Dashboard() {
                                         return (
                                             <QuestionCardMelody instructions={thisExercise.instructions} notes={thisExercise.notes} clef={thisExercise.clef} keySig={thisExercise.keySig}
                                                 tempo={thisExercise.tempo} baseValue={thisExercise.baseValue} transposition={thisExercise.transposition} headerText={thisExercise.headerText}
-                                                meter={thisExercise.meter} nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex}
+                                                meter={thisExercise.meter} nextExercise={""} currentExercise={""} nextExerciseFunction={nextQuestion}
                                             />
                                         )
                                     case "chord":
                                         return <QuestionCardChord instructions={thisExercise.instructions} headerText={thisExercise.headerText} clef={thisExercise.clef}
                                             keySig={thisExercise.keySig} notes={thisExercise.notes} chordNotation={thisExercise.chordNotation}
-                                            nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex} sliderStep={thisExercise.sliderStep} sliderMin={thisExercise.sliderMin}
+                                            nextExercise={''} currentExercise={""} sliderStep={thisExercise.sliderStep} sliderMin={thisExercise.sliderMin}
                                             sliderMax={thisExercise.sliderMax}
+                                            nextExerciseFunction={nextQuestion}
                                         />
                                     default:
                                         return (

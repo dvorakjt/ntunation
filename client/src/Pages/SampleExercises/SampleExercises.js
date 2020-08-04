@@ -27,7 +27,6 @@ function SampleExercises(props) {
     const nextExercise = exercises[nextExerciseIndex];
     //When the component has mounted and when thisExercise updates, call dispatch to set the correct answer to thisExercise.answer
     useEffect(() => {
-        console.log(thisExercise.baseValue);
         dispatch({
             type: "UPDATE_CORRECT_ANSWER",
             correctAnswer: thisExercise.answer

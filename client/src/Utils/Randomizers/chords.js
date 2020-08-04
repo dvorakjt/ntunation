@@ -120,7 +120,7 @@ module.exports = (difficulty, notes) => {
                 secondNote,
                 thirdNote
             ],
-            answer: answer,
+            answer: answer.toString(),
             sliderStep: step,
             sliderMin: sliderMin,
             sliderMax: sliderMax
