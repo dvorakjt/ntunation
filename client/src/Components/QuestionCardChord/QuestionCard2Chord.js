@@ -12,7 +12,7 @@ import WrongCard from '../WrongCard/WrongCard';
 //use the global answer state
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
-function QuestionCard2Notes({ instructions, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise }) {
+function QuestionCard2Notes({ instructions, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise, sliderStep, sliderMin, sliderMax }) {
     const [state, dispatch] = useAnswerStoreContext();
     const [answered, setAnswered] = useState(0);
 
@@ -40,7 +40,7 @@ function QuestionCard2Notes({ instructions, headerText, clef, keySig, notes, cho
                                 <h4>{instructions}</h4>
                             </div>
                         </div>
-                        <ChordCard chordNotation={chordNotation} noteCardKey="1" notes={notes} headerText={headerText} clef={clef} keySig={keySig} />
+                        <ChordCard sliderStep={sliderStep} sliderMin={sliderMin} sliderMax={sliderMax} chordNotation={chordNotation} noteCardKey="1" notes={notes} headerText={headerText} clef={clef} keySig={keySig} />
                     </Modal.Body>
                     <Modal.Footer>
                         <button className="btn btn-primary" onClick={onSubmitBtnClick}>Submit!</button>

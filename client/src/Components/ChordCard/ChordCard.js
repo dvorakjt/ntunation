@@ -8,7 +8,7 @@ import Abcjs from 'react-abcjs';
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
 //noteName parameter must be an abc notation note name
-function ChordCard({ chordNotation, notes, headerText, clef, keySig, transposition }) {
+function ChordCard({ chordNotation, notes, headerText, clef, keySig, sliderStep, sliderMin, sliderMax, transposition }) {
     //hook into the global answer store
     const [state, dispatch] = useAnswerStoreContext();
 
@@ -153,7 +153,7 @@ function ChordCard({ chordNotation, notes, headerText, clef, keySig, transpositi
                         L:1/4
                         K:${keySig}
                         K: clef=${clef}
-                        ${notes[1].abcName}`
+                        ${notes[1].name}`
                             }
                             // abcNotation={
                             //     `X:${noteCardKey} --> set the reference number to the noteCardKey
@@ -179,7 +179,7 @@ function ChordCard({ chordNotation, notes, headerText, clef, keySig, transpositi
                         </button>
                     </div>
 
-                    <input type="range" defaultValue={0} min={-17.5} max={17.5} step={3.5} className="pitchSlider" id="pitchSlider" onChange={updatePitch} />
+                    <input type="range" defaultValue={0} min={sliderMin} max={sliderMax} step={sliderStep} className="pitchSlider" id="pitchSlider" onChange={updatePitch} />
 
                 </div>
             </div>

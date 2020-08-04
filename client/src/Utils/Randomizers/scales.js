@@ -21,14 +21,11 @@ module.exports = (difficulty, notes) => {
             pattern: [2, 1, 2, 2, 2, 2, 1]
         },
         {
-            scale: "chromatic",
-            pattern: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        },
-        {
             scale: "whole tone",
             pattern: [2, 2, 2, 2, 2, 2]
         }
     ]
+
     //determine the smallest and largest possible step (in cents) for each difficulty, also narrow down the range
     //of pitches
     let minStep;
@@ -119,11 +116,15 @@ module.exports = (difficulty, notes) => {
 function buildScale(pitches, pattern, firstIndex) {
     let scale = [];
     let noteIndex = firstIndex;
+    const timings = [
+        "0", "4n", "2n", { ['2n']: 1, ['4n']: 1 }, "1m", { ['1m']: 1, ['4n']: 1 }, { ['1m']: 1, ['2n']: 1 }, { ['1m']: 1, ['2n']: 1, ['4n']: 1 },
+        "2m", { ['2m']: 1, ['4n']: 1 }, { ['2m']: 1, ['2n']: 1 }, { ['2m']: 1, ['2n']: 1, ['4n']: 1 }, "3m"
+    ]
     for (let i = 0; i <= pattern.length; i++) {
         //add the current note to the note index
         pitches[noteIndex] = {
             ...pitches[noteIndex],
-            time: "0",
+            time: timings[i],
             dur: "4n"
         }
         scale.push(pitches[noteIndex]);

@@ -34,11 +34,11 @@ function Dashboard() {
     //modal display state
     const [modalDisplay, setModalDisplay] = useState(true);
 
-    const questions = genRandomQuestions("Intervals - Harmonic, Equal Temperament", difficulty, pitch)
+    const questions = genRandomQuestions("Chords", difficulty, pitch)
 
     //set question state
     const [currentQuestions, setCurrentQuestions] = useState({
-        categoryTitle: "Intervals - Harmonic, Equal Temperament",
+        categoryTitle: "Chords",
         cardType: "chord",
         questions: questions,
         currentIndex: 0
@@ -82,7 +82,8 @@ function Dashboard() {
                                     case "chord":
                                         return <QuestionCardChord instructions={thisExercise.instructions} headerText={thisExercise.headerText} clef={thisExercise.clef}
                                             keySig={thisExercise.keySig} notes={thisExercise.notes} chordNotation={thisExercise.chordNotation}
-                                            nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex}
+                                            nextExercise={nextExercise} currentExercise={currentQuestions.currentIndex} sliderStep={thisExercise.sliderStep} sliderMin={thisExercise.sliderMin}
+                                            sliderMax={thisExercise.sliderMax}
                                         />
                                     default:
                                         return (

@@ -45,6 +45,8 @@ module.exports = (difficulty, notes) => {
         a number between 0 and 5 in this case. Then add the min step so that the result is somewhere between the 
         min step and the max step */
         const step = Math.floor(Math.random() * ((maxStep + 1) - minStep)) + minStep
+        const sliderMax = step * 5;
+        const sliderMin = step * -5;
 
         //now randomize actual pitch and answer values
         //first pick a random first note from the notes array
@@ -72,16 +74,19 @@ module.exports = (difficulty, notes) => {
 
         switch (chordType) {
             case "Major": {
+                console.log("major!")
                 secondIndex = firstIndex + 4;
                 thirdIndex = secondIndex + 3;
                 secondPitch = Number(firstNote.pitch) * 1.25;
                 thirdPitch = Number(firstNote.pitch) * 1.5;
+                break;
             }
             case "minor": {
                 secondIndex = firstIndex + 3;
                 thirdIndex = secondIndex + 4;
                 secondPitch = Number(firstNote.pitch) * 1.2;
                 thirdPitch = Number(firstNote.pitch) * 1.5;
+                break;
             }
         }
 
@@ -97,7 +102,9 @@ module.exports = (difficulty, notes) => {
         adjustment = adjustment - 5;
         //multiply the adjustment by the step to get the actual adjustment in cents
         adjustment = adjustment * step
-
+        //adjust the pitch
+        secondNote.pitch = secondNote.pitch * Math.pow(2, (adjustment / 1200))
+        //set the answer!
         const answer = -adjustment;
 
         //finally return an object to represent each question
@@ -113,7 +120,10 @@ module.exports = (difficulty, notes) => {
                 secondNote,
                 thirdNote
             ],
-            answer: answer
+            answer: answer,
+            sliderStep: step,
+            sliderMin: sliderMin,
+            sliderMax: sliderMax
         })
     }
     return questions;

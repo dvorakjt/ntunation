@@ -45,7 +45,7 @@ function QuestionCardMelody(props) {
                         </div>
                         <div className="row">
                             <div className="col-12">
-                                <MelodyCard notes={props.notes} clef={props.clef} keySig={props.keySig} tempo={props.tempo} baseValue={props.baseValue} transposition={props.transposition} meter={props.meter} />
+                                <MelodyCard headerText={props.headerText} notes={props.notes} clef={props.clef} keySig={props.keySig} tempo={props.tempo} baseValue={props.baseValue} transposition={props.transposition} meter={props.meter} />
                             </div>
                         </div>
                     </Modal.Body>
