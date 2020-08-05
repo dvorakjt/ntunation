@@ -98,26 +98,30 @@ function TopNav(props) {
                         </Link>
                     </li>
                     <Navbar.Text className="hideMe">/</Navbar.Text>
-                    <NavDropdown title="Sample Exercises" id="exercises-dropdown">
-                        <Link to="/sampleexercises/introduction" className="dropdown-item">Introduction
-                        </Link>
-                        <Link to="/sampleexercises/unisons" className="dropdown-item">Unisons
-                        </Link>
-                        <Link to="/sampleexercises/octaves" className="dropdown-item">Octaves
-                        </Link>
-                        <Link to="/sampleexercises/intervals" className="dropdown-item">Intervals
-                        </Link>
-                        <Link to="/sampleexercises/scales" className="dropdown-item">Scales
-                        </Link>
-                        <Link to="/sampleexercises/chords" className="dropdown-item">Chords
-                        </Link>
-                        <Link to="/sampleexercises/melody" className="dropdown-item">Melody
-                        </Link>
-                    </NavDropdown>
-                    <Navbar.Text className="hideMe">/</Navbar.Text>
-                    <Nav.Link href="#">Contact us</Nav.Link>
-                    <Navbar.Text className="hideMe">/</Navbar.Text>
-                    <Nav.Link href="#">Shout-outs!</Nav.Link>
+                    {(() => {
+                        if (!state.loggedIn) {
+                            return (
+                                <>
+                                    <NavDropdown title="Sample Exercises" id="exercises-dropdown">
+                                        <Link to="/sampleexercises/introduction" className="dropdown-item">Introduction
+                                        </Link>
+                                        <Link to="/sampleexercises/unisons" className="dropdown-item">Unisons
+                                        </Link>
+                                        <Link to="/sampleexercises/octaves" className="dropdown-item">Octaves
+                                        </Link>
+                                        <Link to="/sampleexercises/intervals" className="dropdown-item">Intervals
+                                        </Link>
+                                        <Link to="/sampleexercises/scales" className="dropdown-item">Scales
+                                        </Link>
+                                        <Link to="/sampleexercises/chords" className="dropdown-item">Chords
+                                        </Link>
+                                        <Link to="/sampleexercises/melody" className="dropdown-item">Melody
+                                    </Link>
+                                    </NavDropdown>
+                                </>
+                            )
+                        }
+                    })()}
                     {(() => {
                         if (!state.loggedIn) {
                             return (
@@ -130,7 +134,6 @@ function TopNav(props) {
                         } else {
                             return (
                                 <>
-                                    <Navbar.Text className="hideMe">/</Navbar.Text>
                                     <Navbar.Text>{`Welcome, ${state.user.nickname}`}</Navbar.Text>
                                     <Button variant="outline-light" onClick={onLogout}>Logout</Button>
                                 </>

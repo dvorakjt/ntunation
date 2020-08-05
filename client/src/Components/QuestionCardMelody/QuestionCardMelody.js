@@ -113,7 +113,7 @@ function QuestionCardMelody(props) {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <h5>{state.userAnswer ? "Your answer: " + props.notes[state.userAnswer].dispName : "Select a note."}</h5>
+                        <h5>{state.userAnswer.length > 0 ? "Your answer: " + props.notes[state.userAnswer].dispName : "Select a note."}</h5>
                         <button className="btn btn-danger" value="Flat" onClick={submitAnswer}>Flat</button>
                         <button className="btn btn-success" value="Sharp" onClick={submitAnswer}>Sharp</button>
                     </Modal.Footer>
