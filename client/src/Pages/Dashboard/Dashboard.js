@@ -183,7 +183,7 @@ function Dashboard() {
                     <ProgressChart category="Scales" introComplete={unisons.introDone} practiceComplete={scales.practiceDone} quizComplete={scales.quizDone} totalCorrect={scales.correct} totalWrong={scales.wrong} totalAttempts={scales.attempts} startFunction={
                         (e) => {
                             e.preventDefault();
-                            setCategory("Scales", "melody")
+                            setCategory("Scales", "melody", "scales")
                         }} />
                     <ProgressChart category="Chords (Just Temperament)" introComplete={chords.introDone} practiceComplete={chords.practiceDone} quizComplete={unisons.quizDone} totalCorrect={chords.correct} totalWrong={chords.wrong} totalAttempts={chords.attempts}
                         startFunction={
