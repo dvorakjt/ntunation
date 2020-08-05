@@ -19,7 +19,7 @@ import { useUserStoreContext } from '../../Utils/UserStore';
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
 function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise, sliderStep, sliderMin, sliderMax, category }) {
-    const user = JSON.parse(localStorage.getItem('lsUser'));
+    let user = JSON.parse(localStorage.getItem('lsUser'));
 
     let [state, dispatch] = useUserStoreContext();
     const userState = state;
@@ -35,11 +35,11 @@ function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, cl
             //if logged in...
             if (user) {
                 API.updateUser({
-                    email: userState.user.email,
+                    email: user.email,
                     category: category,
-                    attempts: Number(user[category].attempts) + 1,
-                    correct: Number(user[category].correct) + 1,
-                    wrong: user[category].wrong,
+                    attempts: Number(userState.user[category].attempts) + 1,
+                    correct: Number(userState.user[category].correct) + 1,
+                    wrong: userState.user[category].wrong,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -48,9 +48,9 @@ function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, cl
                     type: "UPDATE",
                     category: category,
                     updatedData: {
-                        attempts: Number(user[category]).attempts + 1,
-                        correct: Number(user[category].correct) + 1,
-                        wrong: user[category].wrong,
+                        attempts: Number(userState.user[category]).attempts + 1,
+                        correct: Number(userState.user[category].correct) + 1,
+                        wrong: userState.user[category].wrong,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
@@ -65,9 +65,9 @@ function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, cl
                 API.updateUser({
                     email: user.email,
                     category: category,
-                    attempts: Number(user[category].attempts) + 1,
-                    correct: Number(user[category].correct),
-                    wrong: Number(user[category].wrong) + 1,
+                    attempts: Number(userState.user[category].attempts) + 1,
+                    correct: Number(userState.user[category].correct),
+                    wrong: Number(userState.user[category].wrong) + 1,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -76,9 +76,9 @@ function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, cl
                     type: "UPDATE",
                     category: category,
                     updatedData: {
-                        attempts: Number(user[category].attempts) + 1,
-                        correct: Number(user[category].correct),
-                        wrong: Number(user[category].wrong) + 1,
+                        attempts: Number(userState.user[category].attempts) + 1,
+                        correct: Number(userState.user[category].correct),
+                        wrong: Number(userState.user[category].wrong) + 1,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false

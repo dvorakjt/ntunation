@@ -100,7 +100,8 @@ module.exports = function (app) {
           quizDone: req.body.quizDone
         }
       });
-      user.save();
+      await user.save();
+      res.json(user);
     } else {
       return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }

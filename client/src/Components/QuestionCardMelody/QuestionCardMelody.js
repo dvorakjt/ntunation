@@ -39,9 +39,9 @@ function QuestionCardMelody(props) {
                 API.updateUser({
                     email: userState.user.email,
                     category: props.category,
-                    attempts: Number(user[props.category].attempts) + 1,
-                    correct: Number(user[props.category].correct) + 1,
-                    wrong: user[props.category].wrong,
+                    attempts: Number(userState.user[props.category].attempts) + 1,
+                    correct: Number(userState.user[props.category].correct) + 1,
+                    wrong: userState.user[props.category].wrong,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -50,9 +50,9 @@ function QuestionCardMelody(props) {
                     type: "UPDATE",
                     category: props.category,
                     updatedData: {
-                        attempts: Number(user[props.category]).attempts + 1,
-                        correct: Number(user[props.category].correct) + 1,
-                        wrong: user[props.category].wrong,
+                        attempts: Number(userState.user[props.category]).attempts + 1,
+                        correct: Number(userState.user[props.category].correct) + 1,
+                        wrong: userState.user[props.category].wrong,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
@@ -66,9 +66,9 @@ function QuestionCardMelody(props) {
                 API.updateUser({
                     email: user.email,
                     category: props.category,
-                    attempts: Number(user[props.category].attempts) + 1,
-                    correct: Number(user[props.category].correct),
-                    wrong: Number(user[props.category].wrong) + 1,
+                    attempts: Number(userState.user[props.category].attempts) + 1,
+                    correct: Number(userState.user[props.category].correct),
+                    wrong: Number(userState.user[props.category].wrong) + 1,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -77,9 +77,9 @@ function QuestionCardMelody(props) {
                     type: "UPDATE",
                     category: props.category,
                     updatedData: {
-                        attempts: Number(user[props.category].attempts) + 1,
-                        correct: Number(user[props.category].correct),
-                        wrong: Number(user[props.category].wrong) + 1,
+                        attempts: Number(userState.user[props.category].attempts) + 1,
+                        correct: Number(userState.user[props.category].correct),
+                        wrong: Number(userState.user[props.category].wrong) + 1,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false

@@ -19,7 +19,7 @@ import { useUserStoreContext } from '../../Utils/UserStore';
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
 function QuestionCard2Notes(props) {
-    const user = JSON.parse(localStorage.getItem('lsUser'));
+    let user = JSON.parse(localStorage.getItem('lsUser'));
 
     let [state, dispatch] = useUserStoreContext();
     const userState = state;
@@ -37,9 +37,9 @@ function QuestionCard2Notes(props) {
                 API.updateUser({
                     email: userState.user.email,
                     category: props.category,
-                    attempts: Number(user[props.category].attempts) + 1,
-                    correct: Number(user[props.category].correct) + 1,
-                    wrong: user[props.category].wrong,
+                    attempts: Number(userState.user[props.category].attempts) + 1,
+                    correct: Number(userState.user[props.category].correct) + 1,
+                    wrong: userState.user[props.category].wrong,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -50,7 +50,7 @@ function QuestionCard2Notes(props) {
                     updatedData: {
                         attempts: Number(user[props.category]).attempts + 1,
                         correct: Number(user[props.category].correct) + 1,
-                        wrong: user[props.category].wrong,
+                        wrong: userState.user[props.category].wrong,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
@@ -65,9 +65,9 @@ function QuestionCard2Notes(props) {
                 API.updateUser({
                     email: user.email,
                     category: props.category,
-                    attempts: Number(user[props.category].attempts) + 1,
-                    correct: Number(user[props.category].correct),
-                    wrong: Number(user[props.category].wrong) + 1,
+                    attempts: Number(userState.user[props.category].attempts) + 1,
+                    correct: Number(userState.user[props.category].correct),
+                    wrong: Number(userState.user[props.category].wrong) + 1,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -76,9 +76,9 @@ function QuestionCard2Notes(props) {
                     type: "UPDATE",
                     category: props.category,
                     updatedData: {
-                        attempts: Number(user[props.category].attempts) + 1,
-                        correct: Number(user[props.category].correct),
-                        wrong: Number(user[props.category].wrong) + 1,
+                        attempts: Number(userState.user[props.category].attempts) + 1,
+                        correct: Number(userState.user[props.category].correct),
+                        wrong: Number(userState.user[props.category].wrong) + 1,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
@@ -102,9 +102,9 @@ function QuestionCard2Notes(props) {
                 API.updateUser({
                     email: user.email,
                     category: props.category,
-                    attempts: Number(user[props.category].attempts) + 1,
-                    correct: Number(user[props.category].correct) + 1,
-                    wrong: Number(user[props.category].wrong),
+                    attempts: Number(userState.user[props.category].attempts) + 1,
+                    correct: Number(userState.user[props.category].correct) + 1,
+                    wrong: Number(userState.user[props.category].wrong),
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -113,9 +113,9 @@ function QuestionCard2Notes(props) {
                     type: "UPDATE",
                     category: props.category,
                     updatedData: {
-                        attempts: Number(user[props.category].attempts) + 1,
-                        correct: Number(user[props.category].correct) + 1,
-                        wrong: Number(user[props.category].wrong),
+                        attempts: Number(userState.user[props.category].attempts) + 1,
+                        correct: Number(userState.user[props.category].correct) + 1,
+                        wrong: Number(userState.user[props.category].wrong),
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
@@ -129,9 +129,9 @@ function QuestionCard2Notes(props) {
                 API.updateUser({
                     email: user.email,
                     category: props.category,
-                    attempts: Number(user[props.category].attempts) + 1,
-                    correct: Number(user[props.category].correct),
-                    wrong: Number(user[props.category].wrong) + 1,
+                    attempts: Number(userState.user[props.category].attempts) + 1,
+                    correct: Number(userState.user[props.category].correct),
+                    wrong: Number(userState.user[props.category].wrong) + 1,
                     introDone: false,
                     practiceDone: false,
                     quizDone: false
@@ -140,9 +140,9 @@ function QuestionCard2Notes(props) {
                     type: "UPDATE",
                     category: props.category,
                     updatedData: {
-                        attempts: Number(user[props.category].attempts) + 1,
-                        correct: Number(user[props.category].correct),
-                        wrong: Number(user[props.category].wrong) + 1,
+                        attempts: Number(userState.user[props.category].attempts) + 1,
+                        correct: Number(userState.user[props.category].correct),
+                        wrong: Number(userState.user[props.category].wrong) + 1,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false

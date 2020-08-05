@@ -78,9 +78,7 @@ function TopNav(props) {
                         });
                 })
                 .catch((error) => {
-                    if (error.response.status === 401) {
-                        this.setState({ message: 'Login failed. Username or password not match' });
-                    }
+                    console.log(error);
                 });
         }
     }
