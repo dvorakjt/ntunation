@@ -156,36 +156,36 @@ function Dashboard() {
                                 e.preventDefault();
                                 setCategory("Unisons", "2Notes", "unisons")
                             }} />
-                    <ProgressChart category="Octaves" introComplete={octaves.introDone} practiceComplete={octaves.practiceDone} quizComplete={octaves.quizDone} totalCorrect={octaves.correct} totalWrong={octaves.wrong} totalAttempts={octaves.attempts}
+                    <ProgressChart category="Octaves" introComplete={octaves.introDone} practiceComplete={octaves.practiceDone} quizComplete={octaves.quizDone} totalCorrect={user.octaves.correct} totalWrong={user.octaves.wrong} totalAttempts={user.octaves.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
                                 setCategory("Octaves", "2Notes", "octaves")
                             }} />
-                    <ProgressChart category="Intervals (Melodic, Equal Temperament)" introComplete={intervalsMelEq.introDone} practiceComplete={intervalsMelEq.practiceDone} quizComplete={intervalsMelEq.quizDone} totalCorrect={intervalsMelEq.correct} totalWrong={intervalsMelEq.wrong} totalAttempts={intervalsMelEq.attempts}
+                    <ProgressChart category="Intervals (Melodic, Equal Temperament)" introComplete={intervalsMelEq.introDone} practiceComplete={intervalsMelEq.practiceDone} quizComplete={intervalsMelEq.quizDone} totalCorrect={user.intervalsMelEq.correct} totalWrong={user.intervalsMelEq.wrong} totalAttempts={user.intervalsMelEq.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
                                 setCategory("Intervals - Melodic, Equal Temperament", "2Notes", "intervalsMelEq")
                             }} />
-                    <ProgressChart category="Intervals (Harmonic, Equal Temperament)" introComplete={intervalsHrmEq.introDone} practiceComplete={intervalsHrmEq.practiceDone} quizComplete={intervalsHrmEq.quizDone} totalCorrect={intervalsHrmEq.correct} totalWrong={intervalsHrmEq.wrong} totalAttempts={intervalsHrmEq.attempts}
+                    <ProgressChart category="Intervals (Harmonic, Equal Temperament)" introComplete={intervalsHrmEq.introDone} practiceComplete={intervalsHrmEq.practiceDone} quizComplete={intervalsHrmEq.quizDone} totalCorrect={user.intervalsHrmEq.correct} totalWrong={user.intervalsHrmEq.wrong} totalAttempts={user.intervalsHrmEq.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
                                 setCategory("Intervals - Harmonic, Equal Temperament", "chord", "intervalsHrmEq")
                             }} />
-                    <ProgressChart category="Intervals (Harmonic, Just Temperament)" introComplete={intervalsHrmJst.practiceDone} quizComplete={intervalsHrmJst.quizDone} totalCorrect={intervalsHrmJst.correct} totalWrong={intervalsHrmJst.wrong} totalAttempts={intervalsHrmJst.attempts}
+                    <ProgressChart category="Intervals (Harmonic, Just Temperament)" introComplete={intervalsHrmJst.practiceDone} quizComplete={intervalsHrmJst.quizDone} totalCorrect={user.intervalsHrmJst.correct} totalWrong={user.intervalsHrmJst.wrong} totalAttempts={user.intervalsHrmJst.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
                                 setCategory("Intervals - Harmonic, Just Temperament", "chord", "intervalsHrmJst")
                             }} />
-                    <ProgressChart category="Scales" introComplete={unisons.introDone} practiceComplete={scales.practiceDone} quizComplete={scales.quizDone} totalCorrect={scales.correct} totalWrong={scales.wrong} totalAttempts={scales.attempts} startFunction={
+                    <ProgressChart category="Scales" introComplete={unisons.introDone} practiceComplete={scales.practiceDone} quizComplete={scales.quizDone} totalCorrect={user.scales.correct} totalWrong={user.scales.wrong} totalAttempts={user.scales.attempts} startFunction={
                         (e) => {
                             e.preventDefault();
                             setCategory("Scales", "melody", "scales")
                         }} />
-                    <ProgressChart category="Chords (Just Temperament)" introComplete={chords.introDone} practiceComplete={chords.practiceDone} quizComplete={unisons.quizDone} totalCorrect={chords.correct} totalWrong={chords.wrong} totalAttempts={chords.attempts}
+                    <ProgressChart category="Chords (Just Temperament)" introComplete={chords.introDone} practiceComplete={chords.practiceDone} quizComplete={unisons.quizDone} totalCorrect={user.chords.correct} totalWrong={user.chords.wrong} totalAttempts={user.chords.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
