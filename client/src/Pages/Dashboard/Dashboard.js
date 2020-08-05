@@ -149,7 +149,6 @@ function Dashboard() {
             <h1 id="exercisesH1">Exercises</h1>
             <table>
                 <tbody>
-                    <NonChartTr category="Introduction" link="Start the Intro" complete={introComplete} />
                     <ProgressChart category="Unisons" introComplete={unisons.introDone} practiceComplete={unisons.practiceDone} quizComplete={unisons.quizDone} totalCorrect={user.unisons.correct} totalWrong={user.unisons.wrong} totalAttempts={user.unisons.attempts}
                         startFunction={
                             (e) => {

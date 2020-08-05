@@ -24,8 +24,8 @@ function ProgressChart(props) {
 
             /></td>
             {/* href will need to go to props.introLink, props.practiceLink, props.quizLink etc */}
-            <td className="cell3"><a href="">Introduction</a>{(() => { if (props.introComplete) return (<i class="fas fa-check"></i>) })()}</td>
-            <td className="cell4"><a href="" onClick={props.startFunction}>Practice</a>{(() => { if (props.practiceComplete) return (<i class="fas fa-check"></i>) })()}</td>
+            {/*<td className="cell3"><a href="">Introduction</a>{(() => { if (props.introComplete) return (<i class="fas fa-check"></i>) })()}</td>
+            <td className="cell4"><a href="" onClick={props.startFunction}>Practice</a>{(() => { if (props.practiceComplete) return (<i class="fas fa-check"></i>) })()}</td>*/}
             <td className="cell5"><a href="" onClick={props.startFunction}>Quiz{(() => { if (props.quizComplete) return (<i class="fas fa-check"></i>) })()}</a></td>
         </tr>
     )
