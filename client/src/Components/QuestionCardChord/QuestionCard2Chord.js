@@ -9,26 +9,89 @@ import ChordCard from '../ChordCard/ChordCard';
 import CorrectCard from '../CorrectCard/CorrectCard';
 import WrongCard from '../WrongCard/WrongCard';
 
+//import API Util
+import API from '../../Utils/API';
+
+//import global user store
+import { useUserStoreContext } from '../../Utils/UserStore';
+
 //use the global answer state
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
-function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise, sliderStep, sliderMin, sliderMax }) {
-    const [state, dispatch] = useAnswerStoreContext();
+function QuestionCard2Notes({ instructions, nextExerciseFunction, headerText, clef, keySig, notes, chordNotation, nextExercise, currentExercise, sliderStep, sliderMin, sliderMax, category }) {
+    const user = JSON.parse(localStorage.getItem('lsUser'));
+
+    let [state, dispatch] = useUserStoreContext();
+    const userState = state;
+    const userDispatch = dispatch;
+    [state, dispatch] = useAnswerStoreContext();
+
     const [answered, setAnswered] = useState(0);
 
     const onSubmitBtnClick = (event) => {
         event.preventDefault();
-        console.log(state.userAnswer + " | " + state.correctAnswer);
         if (state.userAnswer === state.correctAnswer) {
             setAnswered(1);
+            //if logged in...
+            if (user) {
+                API.updateUser({
+                    email: userState.user.email,
+                    category: category,
+                    attempts: Number(user[category].attempts) + 1,
+                    correct: Number(user[category].correct) + 1,
+                    wrong: user[category].wrong,
+                    introDone: false,
+                    practiceDone: false,
+                    quizDone: false
+                })
+                userDispatch({
+                    type: "UPDATE",
+                    category: category,
+                    updatedData: {
+                        attempts: Number(user[category]).attempts + 1,
+                        correct: Number(user[category].correct) + 1,
+                        wrong: user[category].wrong,
+                        introDone: false,
+                        practiceDone: false,
+                        quizDone: false
+                    }
+                });
+                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+            }
         } else {
             setAnswered(2);
+            //if logged in...
+            if (user) {
+                API.updateUser({
+                    email: user.email,
+                    category: category,
+                    attempts: Number(user[category].attempts) + 1,
+                    correct: Number(user[category].correct),
+                    wrong: Number(user[category].wrong) + 1,
+                    introDone: false,
+                    practiceDone: false,
+                    quizDone: false
+                })
+                userDispatch({
+                    type: "UPDATE",
+                    category: category,
+                    updatedData: {
+                        attempts: Number(user[category].attempts) + 1,
+                        correct: Number(user[category].correct),
+                        wrong: Number(user[category].wrong) + 1,
+                        introDone: false,
+                        practiceDone: false,
+                        quizDone: false
+                    }
+                });
+                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+            }
+            //reset the global user answer state
+            dispatch({
+                type: "UPDATE_USER_ANSWER",
+                userAnswer: ""
+            });
         }
-        //reset the global user answer state
-        dispatch({
-            type: "UPDATE_USER_ANSWER",
-            userAnswer: ""
-        });
     }
     switch (answered) {
         case 0:

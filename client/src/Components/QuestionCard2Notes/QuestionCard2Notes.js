@@ -9,20 +9,83 @@ import Notecard from '../Notecard/Notecard';
 import CorrectCard from '../CorrectCard/CorrectCard';
 import WrongCard from '../WrongCard/WrongCard';
 
+//import API Util
+import API from '../../Utils/API';
+
+//import global user store
+import { useUserStoreContext } from '../../Utils/UserStore';
+
 //use the global answer state
 import { useAnswerStoreContext } from "../../Utils/AnswerStore";
 
 function QuestionCard2Notes(props) {
-    const [state, dispatch] = useAnswerStoreContext();
+    const user = JSON.parse(localStorage.getItem('lsUser'));
+
+    let [state, dispatch] = useUserStoreContext();
+    const userState = state;
+    const userDispatch = dispatch;
+    [state, dispatch] = useAnswerStoreContext();
+
     const [answered, setAnswered] = useState(0);
 
-    const onSubmitBtnClick = (event) => {
+    const onSubmitBtnClick = async (event) => {
         event.preventDefault();
-        console.log(state.userAnswer + " | " + state.correctAnswer);
         if (state.userAnswer === state.correctAnswer) {
             setAnswered(1);
+            //if logged in...
+            if (user) {
+                API.updateUser({
+                    email: userState.user.email,
+                    category: props.category,
+                    attempts: Number(user[props.category].attempts) + 1,
+                    correct: Number(user[props.category].correct) + 1,
+                    wrong: user[props.category].wrong,
+                    introDone: false,
+                    practiceDone: false,
+                    quizDone: false
+                })
+                userDispatch({
+                    type: "UPDATE",
+                    category: props.category,
+                    updatedData: {
+                        attempts: Number(user[props.category]).attempts + 1,
+                        correct: Number(user[props.category].correct) + 1,
+                        wrong: user[props.category].wrong,
+                        introDone: false,
+                        practiceDone: false,
+                        quizDone: false
+                    }
+                });
+                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+            }
         } else {
             setAnswered(2);
+            //if logged in...
+            if (user) {
+                API.updateUser({
+                    email: user.email,
+                    category: props.category,
+                    attempts: Number(user[props.category].attempts) + 1,
+                    correct: Number(user[props.category].correct),
+                    wrong: Number(user[props.category].wrong) + 1,
+                    introDone: false,
+                    practiceDone: false,
+                    quizDone: false
+                })
+                userDispatch({
+                    type: "UPDATE",
+                    category: props.category,
+                    updatedData: {
+                        attempts: Number(user[props.category].attempts) + 1,
+                        correct: Number(user[props.category].correct),
+                        wrong: Number(user[props.category].wrong) + 1,
+                        introDone: false,
+                        practiceDone: false,
+                        quizDone: false
+                    }
+                });
+                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+            }
         }
         //reset the global user answer state
         dispatch({
@@ -35,8 +98,58 @@ function QuestionCard2Notes(props) {
         const sharpOrFlat = event.target.value;
         if (state.correctAnswer === sharpOrFlat) {
             setAnswered(1);
+            if (user) {
+                API.updateUser({
+                    email: user.email,
+                    category: props.category,
+                    attempts: Number(user[props.category].attempts) + 1,
+                    correct: Number(user[props.category].correct) + 1,
+                    wrong: Number(user[props.category].wrong),
+                    introDone: false,
+                    practiceDone: false,
+                    quizDone: false
+                })
+                userDispatch({
+                    type: "UPDATE",
+                    category: props.category,
+                    updatedData: {
+                        attempts: Number(user[props.category].attempts) + 1,
+                        correct: Number(user[props.category].correct) + 1,
+                        wrong: Number(user[props.category].wrong),
+                        introDone: false,
+                        practiceDone: false,
+                        quizDone: false
+                    }
+                });
+                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+            }
         } else {
             setAnswered(2);
+            if (user) {
+                API.updateUser({
+                    email: user.email,
+                    category: props.category,
+                    attempts: Number(user[props.category].attempts) + 1,
+                    correct: Number(user[props.category].correct),
+                    wrong: Number(user[props.category].wrong) + 1,
+                    introDone: false,
+                    practiceDone: false,
+                    quizDone: false
+                })
+                userDispatch({
+                    type: "UPDATE",
+                    category: props.category,
+                    updatedData: {
+                        attempts: Number(user[props.category].attempts) + 1,
+                        correct: Number(user[props.category].correct),
+                        wrong: Number(user[props.category].wrong) + 1,
+                        introDone: false,
+                        practiceDone: false,
+                        quizDone: false
+                    }
+                });
+                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+            }
         }
         //reset the global user answer state
         dispatch({

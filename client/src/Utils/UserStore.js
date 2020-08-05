@@ -2,6 +2,7 @@ import React, { createContext, useReducer, useContext } from "react";
 
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
+const UPDATE = "UPDATE";
 
 const UserStoreContext = createContext();
 const { Provider } = UserStoreContext;
@@ -20,6 +21,14 @@ const reducer = (state, action) => {
             return {
                 loggedIn: false,
                 user: {}
+            }
+        case UPDATE:
+            return {
+                loggedIn: true,
+                user: {
+                    ...state.user,
+                    [action.category]: action.updatedData
+                }
             }
         default:
             return state;

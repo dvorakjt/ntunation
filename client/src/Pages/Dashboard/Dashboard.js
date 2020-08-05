@@ -8,9 +8,6 @@ import QuestionCard2Notes from '../../Components/QuestionCard2Notes/QuestionCard
 import QuestionCardChord from '../../Components/QuestionCardChord/QuestionCard2Chord';
 import InfoCard from '../../Components/InfoCard/InfoCard';
 
-//import API Util
-import API from '../../Utils/API';
-
 //import global user store
 import { useUserStoreContext } from '../../Utils/UserStore';
 //import answerstore 
@@ -42,7 +39,8 @@ function Dashboard() {
         categoryTitle: "",
         cardType: "",
         questions: [],
-        currentIndex: 0
+        currentIndex: 0,
+        userDataCategory: ""
     })
 
     //handle next question
@@ -56,7 +54,8 @@ function Dashboard() {
                 categoryTitle: "",
                 cardType: "",
                 questions: [],
-                currentIndex: 0
+                currentIndex: 0,
+                userDataCategory: ""
             })
             answerDispatch({
                 type: "UPDATE_CORRECT_ANSWER",
@@ -75,14 +74,15 @@ function Dashboard() {
     }
 
     //category setting function
-    function setCategory(category, ctype) {
+    function setCategory(category, ctype, userDataCategory) {
         const questions = genRandomQuestions(category, difficulty, pitch);
         console.log(questions);
         setCurrentQuestions({
             categoryTitle: category,
             cardType: ctype,
             questions: questions,
-            currentIndex: 0
+            currentIndex: 0,
+            userDataCategory: userDataCategory
         })
         answerDispatch({
             type: "UPDATE_CORRECT_ANSWER",
@@ -115,13 +115,14 @@ function Dashboard() {
                                                 header2={thisExercise.header2} clef1={thisExercise.clef1} clef2={thisExercise.clef2}
                                                 keySig={thisExercise.keySig} slider={thisExercise.slider} sliderMin={thisExercise.sliderMin}
                                                 sliderMax={thisExercise.sliderMax} sliderStep={thisExercise.sliderStep} btn={thisExercise.btn}
-                                                nextExercise={""} currentExercise={""} nextExerciseFunction={nextQuestion}
+                                                nextExercise={""} currentExercise={""} nextExerciseFunction={nextQuestion} category={currentQuestions.userDataCategory}
                                             />)
                                     case "melody":
                                         return (
                                             <QuestionCardMelody instructions={thisExercise.instructions} notes={thisExercise.notes} clef={thisExercise.clef} keySig={thisExercise.keySig}
                                                 tempo={thisExercise.tempo} baseValue={thisExercise.baseValue} transposition={thisExercise.transposition} headerText={thisExercise.headerText}
                                                 meter={thisExercise.meter} nextExercise={""} currentExercise={""} nextExerciseFunction={nextQuestion}
+                                                category={currentQuestions.userDataCategory}
                                             />
                                         )
                                     case "chord":
@@ -130,6 +131,7 @@ function Dashboard() {
                                             nextExercise={''} currentExercise={""} sliderStep={thisExercise.sliderStep} sliderMin={thisExercise.sliderMin}
                                             sliderMax={thisExercise.sliderMax}
                                             nextExerciseFunction={nextQuestion}
+                                            category={currentQuestions.userDataCategory}
                                         />
                                     default:
                                         return (
@@ -148,35 +150,35 @@ function Dashboard() {
             <table>
                 <tbody>
                     <NonChartTr category="Introduction" link="Start the Intro" complete={introComplete} />
-                    <ProgressChart category="Unisons" introComplete={unisons.introDone} practiceComplete={unisons.practiceDone} quizComplete={unisons.quizDone} totalCorrect={unisons.correct} totalWrong={unisons.wrong} totalAttempts={unisons.attempts}
+                    <ProgressChart category="Unisons" introComplete={unisons.introDone} practiceComplete={unisons.practiceDone} quizComplete={unisons.quizDone} totalCorrect={user.unisons.correct} totalWrong={user.unisons.wrong} totalAttempts={user.unisons.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
-                                setCategory("Unisons", "2Notes")
+                                setCategory("Unisons", "2Notes", "unisons")
                             }} />
                     <ProgressChart category="Octaves" introComplete={octaves.introDone} practiceComplete={octaves.practiceDone} quizComplete={octaves.quizDone} totalCorrect={octaves.correct} totalWrong={octaves.wrong} totalAttempts={octaves.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
-                                setCategory("Octaves", "2Notes")
+                                setCategory("Octaves", "2Notes", "octaves")
                             }} />
                     <ProgressChart category="Intervals (Melodic, Equal Temperament)" introComplete={intervalsMelEq.introDone} practiceComplete={intervalsMelEq.practiceDone} quizComplete={intervalsMelEq.quizDone} totalCorrect={intervalsMelEq.correct} totalWrong={intervalsMelEq.wrong} totalAttempts={intervalsMelEq.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
-                                setCategory("Intervals - Melodic, Equal Temperament", "2Notes")
+                                setCategory("Intervals - Melodic, Equal Temperament", "2Notes", "intervalsMelEq")
                             }} />
                     <ProgressChart category="Intervals (Harmonic, Equal Temperament)" introComplete={intervalsHrmEq.introDone} practiceComplete={intervalsHrmEq.practiceDone} quizComplete={intervalsHrmEq.quizDone} totalCorrect={intervalsHrmEq.correct} totalWrong={intervalsHrmEq.wrong} totalAttempts={intervalsHrmEq.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
-                                setCategory("Intervals - Harmonic, Equal Temperament", "chord")
+                                setCategory("Intervals - Harmonic, Equal Temperament", "chord", "intervalsHrmEq")
                             }} />
                     <ProgressChart category="Intervals (Harmonic, Just Temperament)" introComplete={intervalsHrmJst.practiceDone} quizComplete={intervalsHrmJst.quizDone} totalCorrect={intervalsHrmJst.correct} totalWrong={intervalsHrmJst.wrong} totalAttempts={intervalsHrmJst.attempts}
                         startFunction={
                             (e) => {
                                 e.preventDefault();
-                                setCategory("Intervals - Harmonic, Just Temperament", "chord")
+                                setCategory("Intervals - Harmonic, Just Temperament", "chord", "intervalsHrmJst")
                             }} />
                     <ProgressChart category="Scales" introComplete={unisons.introDone} practiceComplete={scales.practiceDone} quizComplete={scales.quizDone} totalCorrect={scales.correct} totalWrong={scales.wrong} totalAttempts={scales.attempts} startFunction={
                         (e) => {
@@ -187,7 +189,7 @@ function Dashboard() {
                         startFunction={
                             (e) => {
                                 e.preventDefault();
-                                setCategory("Chords", "chord")
+                                setCategory("Chords", "chord", "chords")
                             }} />
 
                 </tbody>

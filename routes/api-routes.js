@@ -87,22 +87,20 @@ module.exports = function (app) {
   app.put("/api/exercises", async function (req, res) {
     const token = getToken(req.headers);
     if (token) {
-      User.findOne({ email: req.body.email }, function (err, user) {
-        if (err) return next(err);
-        else if (jwt.sign(user.toJSON(), settings.secret) === token) { //otherwise, check that the user and token match
-          //if they match, update the user's answered questions
-          User.findOneAndUpdate({ email: req.body.email }, {
-            [req.body.category]: {
-              attempts: req.body.attempts,
-              correct: req.body.correct,
-              wrong: req.body.wrong,
-              introDone: req.body.introDone,
-              practiceDone: req.body.practiceDone,
-              quizDone: req.body.quizDone
-            }
-          })
+      console.log("req.body:" + req.body.email, req.body.category, req.body.attempts);
+      const user = await User.findOne({ email: req.body.email });
+      console.log(user[req.body.category]);
+      user.set({
+        [req.body.category]: {
+          attempts: req.body.attempts,
+          correct: req.body.correct,
+          wrong: req.body.wrong,
+          introDone: req.body.introDone,
+          practiceDone: req.body.practiceDone,
+          quizDone: req.body.quizDone
         }
       });
+      user.save();
     } else {
       return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
