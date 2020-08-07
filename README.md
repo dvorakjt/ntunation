@@ -1,6 +1,6 @@
 # Ntunation
 ![Screenshot of app](./screenshots/screenshot.png)
-Ntunation is an intonation-focused aural-training application for musicians. Users can login to a dashboard, where they are presented with exercises that quiz their ability to hear discrepancies in pitch. There are various categories, including unisons, octaves, scales, and more. Please view the deployed application [here]((http://www.ntunation.com/))!
+Ntunation is an intonation-focused aural-training application for musicians. Users can login to a dashboard, where they are presented with exercises that quiz their ability to hear discrepancies in pitch. There are various categories, including unisons, octaves, scales, and more. Please view the deployed application [here](http://www.ntunation.com/)!
 ## Table of Contents
 
 [Introduction](#introduction)  
