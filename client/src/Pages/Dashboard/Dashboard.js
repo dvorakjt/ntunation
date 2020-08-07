@@ -46,7 +46,6 @@ function Dashboard() {
     //handle next question
     function nextQuestion() {
         let index = currentQuestions.currentIndex + 1
-        console.log(index);
         if (index > 9) {
             //all questions have been answered, reset the state:
             setModalDisplay(false);
@@ -76,7 +75,6 @@ function Dashboard() {
     //category setting function
     function setCategory(category, ctype, userDataCategory) {
         const questions = genRandomQuestions(category, difficulty, pitch);
-        console.log(questions);
         setCurrentQuestions({
             categoryTitle: category,
             cardType: ctype,

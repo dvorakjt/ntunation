@@ -97,7 +97,6 @@ function QuestionCardMelody(props) {
 
     switch (answered) {
         case 0:
-            console.log(props.meter);
             return (
                 <>
                     <Modal.Body>
