@@ -123,7 +123,6 @@ Thank you to all those along the way who taught, encouraged, corrected, motivate
 
 Joe Dvorak
 
-![your github profile pic](https://avatars3.githubusercontent.com/u/61166366?v=4
 Github: dvorakjt
 
 Github repository: [github.com/dvorakjt](https://github.com/dvorakjt/)
