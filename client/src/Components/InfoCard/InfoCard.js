@@ -10,7 +10,20 @@ function infoCard(props) {
                 <p>{props.body}</p>
             </Modal.Body>
             <Modal.Footer>
-                <Link to={`/sampleexercises/${props.nextExercise}`}><button className="btn btn-success">Start Demo!</button></Link>
+                {(() => {
+                    if (props.nextExercise.length > 0) {
+                        return (
+                            <Link to={`/sampleexercises/${props.nextExercise}`}><button className="btn btn-success">Start Demo!</button></Link>
+                        )
+                    } else {
+                        return (
+                            <button className="btn btn-success" onClick={() => {
+                                props.nextExerciseFunction()
+                            }}>
+                                Next</button>
+                        )
+                    }
+                })()}
             </Modal.Footer>
         </>
     )

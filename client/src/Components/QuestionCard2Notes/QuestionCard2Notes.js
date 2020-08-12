@@ -34,57 +34,63 @@ function QuestionCard2Notes(props) {
             setAnswered(1);
             //if logged in...
             if (user) {
-                API.updateUser({
-                    email: userState.user.email,
-                    category: props.category,
-                    attempts: Number(userState.user[props.category].attempts) + 1,
-                    correct: Number(userState.user[props.category].correct) + 1,
-                    wrong: userState.user[props.category].wrong,
-                    introDone: false,
-                    practiceDone: false,
-                    quizDone: false
-                })
-                userDispatch({
-                    type: "UPDATE",
-                    category: props.category,
-                    updatedData: {
-                        attempts: Number(user[props.category]).attempts + 1,
-                        correct: Number(user[props.category].correct) + 1,
+                //and if not in practice mode...
+                if (!props.practice) {
+                    API.updateUser({
+                        email: userState.user.email,
+                        category: props.category,
+                        attempts: Number(userState.user[props.category].attempts) + 1,
+                        correct: Number(userState.user[props.category].correct) + 1,
                         wrong: userState.user[props.category].wrong,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
-                    }
-                });
-                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                    })
+                    userDispatch({
+                        type: "UPDATE",
+                        category: props.category,
+                        updatedData: {
+                            attempts: Number(user[props.category]).attempts + 1,
+                            correct: Number(user[props.category].correct) + 1,
+                            wrong: userState.user[props.category].wrong,
+                            introDone: false,
+                            practiceDone: false,
+                            quizDone: false
+                        }
+                    });
+                    localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                }
             }
         } else {
             setAnswered(2);
             //if logged in...
             if (user) {
-                API.updateUser({
-                    email: user.email,
-                    category: props.category,
-                    attempts: Number(userState.user[props.category].attempts) + 1,
-                    correct: Number(userState.user[props.category].correct),
-                    wrong: Number(userState.user[props.category].wrong) + 1,
-                    introDone: false,
-                    practiceDone: false,
-                    quizDone: false
-                })
-                userDispatch({
-                    type: "UPDATE",
-                    category: props.category,
-                    updatedData: {
+                //and if not in practice mode...
+                if (!props.practice) {
+                    API.updateUser({
+                        email: user.email,
+                        category: props.category,
                         attempts: Number(userState.user[props.category].attempts) + 1,
                         correct: Number(userState.user[props.category].correct),
                         wrong: Number(userState.user[props.category].wrong) + 1,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
-                    }
-                });
-                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                    })
+                    userDispatch({
+                        type: "UPDATE",
+                        category: props.category,
+                        updatedData: {
+                            attempts: Number(userState.user[props.category].attempts) + 1,
+                            correct: Number(userState.user[props.category].correct),
+                            wrong: Number(userState.user[props.category].wrong) + 1,
+                            introDone: false,
+                            practiceDone: false,
+                            quizDone: false
+                        }
+                    });
+                    localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                }
             }
         }
         //reset the global user answer state
@@ -99,56 +105,62 @@ function QuestionCard2Notes(props) {
         if (state.correctAnswer === sharpOrFlat) {
             setAnswered(1);
             if (user) {
-                API.updateUser({
-                    email: user.email,
-                    category: props.category,
-                    attempts: Number(userState.user[props.category].attempts) + 1,
-                    correct: Number(userState.user[props.category].correct) + 1,
-                    wrong: Number(userState.user[props.category].wrong),
-                    introDone: false,
-                    practiceDone: false,
-                    quizDone: false
-                })
-                userDispatch({
-                    type: "UPDATE",
-                    category: props.category,
-                    updatedData: {
+                //and if not in practice mode...
+                if (!props.practice) {
+                    API.updateUser({
+                        email: user.email,
+                        category: props.category,
                         attempts: Number(userState.user[props.category].attempts) + 1,
                         correct: Number(userState.user[props.category].correct) + 1,
                         wrong: Number(userState.user[props.category].wrong),
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
-                    }
-                });
-                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                    })
+                    userDispatch({
+                        type: "UPDATE",
+                        category: props.category,
+                        updatedData: {
+                            attempts: Number(userState.user[props.category].attempts) + 1,
+                            correct: Number(userState.user[props.category].correct) + 1,
+                            wrong: Number(userState.user[props.category].wrong),
+                            introDone: false,
+                            practiceDone: false,
+                            quizDone: false
+                        }
+                    });
+                    localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                }
             }
         } else {
             setAnswered(2);
             if (user) {
-                API.updateUser({
-                    email: user.email,
-                    category: props.category,
-                    attempts: Number(userState.user[props.category].attempts) + 1,
-                    correct: Number(userState.user[props.category].correct),
-                    wrong: Number(userState.user[props.category].wrong) + 1,
-                    introDone: false,
-                    practiceDone: false,
-                    quizDone: false
-                })
-                userDispatch({
-                    type: "UPDATE",
-                    category: props.category,
-                    updatedData: {
+                //and if not in practice mode...
+                if (!props.practice) {
+                    API.updateUser({
+                        email: user.email,
+                        category: props.category,
                         attempts: Number(userState.user[props.category].attempts) + 1,
                         correct: Number(userState.user[props.category].correct),
                         wrong: Number(userState.user[props.category].wrong) + 1,
                         introDone: false,
                         practiceDone: false,
                         quizDone: false
-                    }
-                });
-                localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                    })
+                    userDispatch({
+                        type: "UPDATE",
+                        category: props.category,
+                        updatedData: {
+                            attempts: Number(userState.user[props.category].attempts) + 1,
+                            correct: Number(userState.user[props.category].correct),
+                            wrong: Number(userState.user[props.category].wrong) + 1,
+                            introDone: false,
+                            practiceDone: false,
+                            quizDone: false
+                        }
+                    });
+                    localStorage.setItem("lsUser", JSON.stringify(userState.user));
+                }
             }
         }
         //reset the global user answer state

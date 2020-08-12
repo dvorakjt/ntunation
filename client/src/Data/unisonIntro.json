@@ -1,0 +1,38 @@
+{
+    "unisonIntro": [
+        {
+            "title": "Unisons",
+            "cardType": "info",
+            "bodyHeader": "Introduction",
+            "body": "In music, we label different pitch relationships using different intervals. The interval between one note and another note of the same letter in the same octave is called a unison. Learning to hear intonation discrepancies in unisons is very important both for performing in an ensemble, and as a first step to being able to tune other intervals correctly."
+        },
+        {
+            "title": "Unisons",
+            "cardType": "info",
+            "bodyHeader": "The Exercises",
+            "body": "In this category, you will be presented with a series of random unisons. The second pitch of the unison will either be too sharp (too high), or too flat (too low). You may be either asked to identify whether the pitch is sharp or flat, or to adjust the second pitch until it is in tune."
+        },
+        {
+            "title": "Unisons",
+            "cardType": "demo",
+            "instructions": "Here are two concert A's. They are currently in tune. When you adjust the slider to the right, the second A will become sharper. When you move it to the left, it will become flatter. Take some time to listen to what the unison sounds like when it is sharp, flat and in tune. The sustain buttons allow you to sustain both pitches at the same time.",
+            "noteName1": "A4",
+            "pitch1": "440",
+            "clef1": "treble",
+            "keySig": "C",
+            "noteName2": "A4",
+            "pitch2": "440",
+            "clef2": "treble",
+            "slider": "true",
+            "sliderMin": "-25",
+            "sliderMax": "25",
+            "sliderStep": "5"
+        },
+        {
+            "title": "Unisons",
+            "cardType": "info",
+            "bodyHeader": "Let's get ready!",
+            "body": "You are almost ready to begin! One final note: practice exercises will not affect your overall record. Quiz questions will, so make sure to practice hard before taking each quiz. Good luck!"
+        }
+    ]
+}
