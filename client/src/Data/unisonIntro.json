@@ -16,17 +16,19 @@
             "title": "Unisons",
             "cardType": "demo",
             "instructions": "Here are two concert A's. They are currently in tune. When you adjust the slider to the right, the second A will become sharper. When you move it to the left, it will become flatter. Take some time to listen to what the unison sounds like when it is sharp, flat and in tune. The sustain buttons allow you to sustain both pitches at the same time.",
-            "noteName1": "A4",
+            "noteName1": "A",
             "pitch1": "440",
             "clef1": "treble",
             "keySig": "C",
-            "noteName2": "A4",
+            "noteName2": "A",
             "pitch2": "440",
             "clef2": "treble",
             "slider": "true",
             "sliderMin": "-25",
             "sliderMax": "25",
-            "sliderStep": "5"
+            "sliderStep": "5",
+            "header1": "Note 1: A4",
+            "header2": "Note 2: A4"
         },
         {
             "title": "Unisons",

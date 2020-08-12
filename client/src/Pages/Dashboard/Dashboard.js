@@ -7,6 +7,7 @@ import QuestionCardMelody from '../../Components/QuestionCardMelody/QuestionCard
 import QuestionCard2Notes from '../../Components/QuestionCard2Notes/QuestionCard2Notes';
 import QuestionCardChord from '../../Components/QuestionCardChord/QuestionCard2Chord';
 import InfoCard from '../../Components/InfoCard/InfoCard';
+import DemoCard from '../../Components/DemoCard/DemoCard';
 
 //import global user store
 import { useUserStoreContext } from '../../Utils/UserStore';
@@ -77,6 +78,27 @@ function Dashboard() {
         }
     }
 
+    function nextIntroCard(data) {
+        let index = currentQuestions.currentIndex + 1
+        if (index >= data.length) {
+            //all intro topics have been gone through, so reset the state
+            setModalDisplay(false);
+            setCurrentQuestions({
+                categoryTitle: "",
+                cardType: "",
+                questions: [],
+                currentIndex: 0,
+                userDataCategory: ""
+            })
+        } else {
+            setCurrentQuestions({
+                ...currentQuestions,
+                currentIndex: index,
+                cardType: data[index].cardType
+            })
+        }
+    }
+
     //category setting function
     function setCategory(category, ctype, userDataCategory) {
         const questions = genRandomQuestions(category, difficulty, pitch);
@@ -110,7 +132,7 @@ function Dashboard() {
 
                                 switch (currentQuestions.cardType) {
                                     case "info":
-                                        return (<InfoCard bodyHeader={thisExercise.bodyHeader} body={thisExercise.body} nextExercise={nextExercise} />)
+                                        return (<InfoCard nextExercise="" bodyHeader={thisExercise.bodyHeader} body={thisExercise.body} nextExerciseFunction={() => { nextIntroCard(currentQuestions.questions) }} />)
                                     case "2Notes":
                                         return (
                                             <QuestionCard2Notes instructions={thisExercise.instructions} noteName1={thisExercise.noteName1} noteName2={thisExercise.noteName2}
@@ -138,6 +160,12 @@ function Dashboard() {
                                             category={currentQuestions.userDataCategory}
                                             practice={practiceState}
                                         />
+                                    case "demo":
+                                        return (<DemoCard instructions={thisExercise.instructions} noteName1={thisExercise.noteName1} noteName2={thisExercise.noteName2}
+                                            pitch1={thisExercise.pitch1} pitch2={thisExercise.pitch2} header1={thisExercise.header1} header2={thisExercise.header2}
+                                            clef1={thisExercise.clef1} clef2={thisExercise.clef2} keySig={thisExercise.keySig} slider={thisExercise.slider} sliderMin={thisExercise.sliderMin}
+                                            sliderMax={thisExercise.sliderMax} sliderStep={thisExercise.sliderStep} nextExerciseFunction={() => { nextIntroCard(currentQuestions.questions) }}
+                                        />)
                                     default:
                                         return (
                                             <>
